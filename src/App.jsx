@@ -1,14 +1,16 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/layout';
+import Home from './pages/home';
 
 function App() {
   return (
-    <>
-      <Typography variant="h1">Hello World</Typography>
-      <Typography variant="h2">Hello World</Typography>
-      <Typography variant="h3">Hello World</Typography>
-      <Typography variant="body1">Some text to test</Typography>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />} >
+        <Route index element={<Home />} />
+
+      </Route>
+    </Routes >
 
   );
 }
