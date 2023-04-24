@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import backImage from "../../../src/assets/images/nature-g7ebb943e0_1920_edt-size.jpg";
+import backImage from "../../../src/assets/images/nature-g7ebb943e0_1920_edt-b.jpg";
 
 const theme = createTheme({
   palette: {
@@ -32,13 +32,16 @@ const theme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: (themeParam) => `
+        root {
+          height: 100vh;
+        }
         body {
           background-image: url(${backImage});
           background-repeat: no-repeat;
           background-size: cover;
+          background-attachment: fixed;
           height: 100vh;
           background-position: center;
-          backdrop-filter: blur(4px); 
         },
         h1 {
           color: ${themeParam.palette.primary.main};
@@ -52,12 +55,13 @@ const theme = createTheme({
         p {
           color: black;
         }
+
       `,
     },
   },
 });
 
-export const Theme = ({ children }) => (
+const Theme = ({ children }) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
 
