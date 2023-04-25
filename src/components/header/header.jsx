@@ -1,26 +1,32 @@
-import { AppBar, Stack, Toolbar } from "@mui/material";
+import { AppBar, Box, Stack, Toolbar, Link } from "@mui/material";
 import logo from "../../assets/images/logo-resized.png";
 import Nav from "./nav";
-import "../../styles/header/styles.css";
 import ProfileMenu from "./profilemenu";
-import { Link } from "react-router-dom";
 
+const logoStyle = {
+  width: '80px',
+  height: '80px',
+  marginTop: '5px',
+}
+
+/**
+ * Displays the content for the header
+ */
 function Header() {
   return (
-    <AppBar >
-      <Toolbar className="header" >
-        <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
-          <Stack direction="row" alignItems="center" spacing={4}>
-            <Link to="/">
-              <img src={logo} alt="Logo" className="logo" />
+    <Box sx={{ flexGrow: 1, marginBottom: '100px' }}>
+      <AppBar>
+        <Toolbar sx={{ backgroundColor: 'white', position: 'fixed', width: '100vw', boxShadow: 4, paddingLeft: '24px' }}>
+          <Stack direction="row" spacing={{ xs: 1, sm: 4 }} sx={{ flexGrow: 1, alignItems: "center" }} >
+            <Link href="/">
+              <img src={logo} alt="Logo" style={logoStyle} />
             </Link>
             <Nav />
           </Stack>
           <ProfileMenu />
-        </Stack>
-
-      </Toolbar>
-    </AppBar>
+        </Toolbar>
+      </AppBar>
+    </Box >
   )
 }
 

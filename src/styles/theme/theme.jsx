@@ -25,6 +25,10 @@ const theme = createTheme({
     h3: {
       fontSize: `1.3rem`,
     },
+    h4: {
+      fontSize: `1.1rem`,
+      textDecoration: `none`,
+    },
     body1: {
 
     }
@@ -55,7 +59,9 @@ const theme = createTheme({
         p {
           color: black;
         }
-
+        a {
+          color: ${themeParam.palette.secondary.main};
+        }
       `,
     },
   },

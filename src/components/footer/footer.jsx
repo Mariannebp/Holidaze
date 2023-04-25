@@ -1,23 +1,16 @@
-import { Typography, Stack } from "@mui/material";
-import "../../styles/footer/styles.css";
-import facebook from "../../assets/icons/facebook.png";
-import instagram from "../../assets/icons/instagram.png";
-import twitter from "../../assets/icons/twitter.png";
+import { Typography, Stack, Box } from "@mui/material";
 
+/**
+ * Sets and displays the content for the Footer
+ */
 function Footer() {
   return (
-    <div className="footer">
-      <Stack direction="row" spacing={2}>
-        <img src={facebook} alt="facebook icon" className="socials" />
-        <img src={instagram} alt="intagram icon" className="socials" />
-        <img src={twitter} alt="twitter icon" className="socials" />
-
+    <Box sx={{ backgroundColor: 'white', width: '100vw', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Stack direction={{ xs: "column", sm: "row" }} spacing={{ xs: 0, sm: 1 }} sx={{ textAlign: 'center', margin: "10px auto" }}>
+        <Typography variant="body1" color="primary">Project Exam 2</Typography>
+        <Typography variant="body1" color="primary">© Marianne Bjerløv Pedersen</Typography>
       </Stack>
-      <Stack direction="row" spacing={2}>
-        <Typography variant="body1">Project Exam 2</Typography>
-        <Typography variant="body1">© Marianne Bjerløv Pedersen</Typography>
-      </Stack>
-    </div>
+    </Box>
   )
 }
 

@@ -3,7 +3,7 @@ import React from "react";
 
 function Home() {
   return (
-    <>
+    <div>
       <Typography variant="h1">Home Page</Typography>
       <Typography variant="h1">Home Page</Typography>
       <Typography variant="h1">Home Page</Typography>
@@ -25,9 +25,7 @@ function Home() {
       <Typography variant="h1">Home Page</Typography>
       <Typography variant="h1">Home Page</Typography>
       <Typography variant="h1">Home Page</Typography>
-
-    </>
-
+    </div>
   )
 }
 
