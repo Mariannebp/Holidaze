@@ -6,9 +6,11 @@ const theme = createTheme({
   palette: {
     primary: {
       main: "#746D75",
+      dark: "#5f585f",
     },
     secondary: {
       main: "#9C6135",
+      dark: "#89562f",
     },
   },
   typography: {
@@ -17,13 +19,20 @@ const theme = createTheme({
       fontWeight: `400`,
     },
     h1: {
-      fontSize: `2.5rem`,
+      fontSize: `2rem`,
+      '@media (max-width:600px)': {
+        fontSize: '1.7rem',
+      },
     },
     h2: {
-      fontSize: `2.1rem`,
+      fontSize: `1.3rem`,
+      '@media (max-width:600px)': {
+        fontSize: '1.2rem',
+      },
     },
     h3: {
-      fontSize: `1.3rem`,
+      fontSize: `1.1rem`,
+      textDecoration: `none`,
     },
     h4: {
       fontSize: `1.1rem`,
@@ -54,6 +63,9 @@ const theme = createTheme({
           color: ${themeParam.palette.primary.main};
         },
         h3 {
+          color: ${themeParam.palette.primary.main};
+        }
+        h4 {
           color: ${themeParam.palette.primary.main};
         }
         p {
