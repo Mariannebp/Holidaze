@@ -16,7 +16,7 @@ function Header() {
   return (
     <Box sx={{ flexGrow: 1, marginBottom: '100px' }}>
       <AppBar>
-        <Toolbar sx={{ backgroundColor: 'white', position: 'fixed', width: '100vw', boxShadow: 4, paddingLeft: '24px' }}>
+        <Toolbar sx={{ backgroundColor: 'white', position: 'fixed', width: '100%', boxShadow: 4, paddingLeft: '24px' }}>
           <Stack direction="row" spacing={{ xs: 1, sm: 4 }} sx={{ flexGrow: 1, alignItems: "center" }} >
             <Link href="/">
               <img src={logo} alt="Logo" style={logoStyle} />
