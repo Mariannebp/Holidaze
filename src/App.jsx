@@ -20,7 +20,7 @@ function App() {
         <Route path="/pages/new-venue" element={<NewVenue />} />
         <Route path="/pages/register" element={<Register />} />
         <Route path="/pages/login" element={<Login />} />
-        <Route path="/pages/venue-specific" element={<Venue />} />
+        <Route path="/pages/venue-specific/:id" element={<Venue />} />
         <Route path="/pages/edit-avatar" element={<Avatar />} />
       </Route>
     </Routes >
