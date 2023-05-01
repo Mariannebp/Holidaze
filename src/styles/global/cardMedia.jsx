@@ -23,10 +23,11 @@ export const CardMediaMain = styled(CardMedia)(({ theme }) => ({
 export const CardMediaPlaceholder = styled(CardMedia)(({ theme }) => ({
   width: '200px',
   height: 'fit-content',
-  margin: 'auto 15px',
+  margin: 'auto 25px',
 
   '@media (max-width: 750px)': {
     width: '170px',
+    margin: 'auto 25px',
   },
 
   '@media (max-width: 600px)': {
