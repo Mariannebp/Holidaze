@@ -31,14 +31,14 @@ export const CardMediaPlaceholder = styled(CardMedia)(({ theme }) => ({
   },
 
   '@media (max-width: 600px)': {
-    width: 'fit-content',
+    width: '224px',
     height: '150px',
     margin: '15px auto',
   },
 
   '@media (max-width: 350px)': {
-    width: 'fit-content',
-    height: '140px',
-    margin: '15px auto',
+    width: '162px',
+    height: '108px',
+    margin: '29px auto',
   },
 }));
