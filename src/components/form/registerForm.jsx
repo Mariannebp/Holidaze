@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -38,13 +38,38 @@ const schema = yup
  */
 function RegisterForm() {
   const { register, handleSubmit, formState: { errors }, } = useForm({ resolver: yupResolver(schema) });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [avatar, setAvatar] = useState("");
+  const [password, setPassword] = useState("");
+  const [venueManager, setVenueManager] = useState(false);
 
   useEffect(() => {
     document.title = "Holidaze | Register";
   })
 
-  function onSubmit(data) {
-    console.log(data);
+  function onSubmit() {
+    console.log({ name, email, avatar, password, venueManager });
+  }
+
+  function onName(e) {
+    setName(e.target.value);
+  }
+
+  function onEmail(e) {
+    setEmail(e.target.value);
+  }
+
+  function onAvatar(e) {
+    setAvatar(e.target.value);
+  }
+
+  function onPassword(e) {
+    setPassword(e.target.value);
+  }
+
+  function onVenueManager() {
+    setVenueManager(!venueManager);
   }
 
   return (
@@ -55,7 +80,9 @@ function RegisterForm() {
             fullWidth
             id="name"
             label="Name"
+            value={name}
             {...register(`name`)}
+            onChange={onName}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.name?.message}</Typography>
         </div>
@@ -64,7 +91,9 @@ function RegisterForm() {
             fullWidth
             id="email"
             label="Email"
+            value={email}
             {...register(`email`)}
+            onChange={onEmail}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.email?.message}</Typography>
         </div>
@@ -74,7 +103,9 @@ function RegisterForm() {
             id="avatar"
             label="Avatar"
             type="url"
+            value={avatar}
             {...register(`avatar`)}
+            onChange={onAvatar}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.avatar?.message}</Typography>
         </div>
@@ -84,7 +115,9 @@ function RegisterForm() {
             id="password"
             label="Password"
             type="password"
+            value={password}
             {...register(`password`)}
+            onChange={onPassword}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.password?.message}</Typography>
         </div>
@@ -99,7 +132,14 @@ function RegisterForm() {
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.repeat_password?.message}</Typography>
         </div>
         <div>
-          <FormControlLabel control={<Checkbox />} label="Venue Manager" id="venueManager" {...register(`venueManager`)} />
+          <FormControlLabel
+            control={<Checkbox />}
+            label="Venue Manager"
+            id="venueManager"
+            value={venueManager}
+            {...register(`venueManager`)}
+            onChange={onVenueManager}
+          />
         </div>
         <g.ButtonMain variant="contained" type="submit">REGISTER</g.ButtonMain>
       </Box>

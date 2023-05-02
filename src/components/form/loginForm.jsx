@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -25,13 +25,23 @@ const schema = yup
  */
 function LoginForm() {
   const { register, handleSubmit, formState: { errors }, } = useForm({ resolver: yupResolver(schema) });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
-    document.title = "Holidaze | Register";
+    document.title = "Holidaze | Log In";
   })
 
-  function onSubmit(data) {
-    console.log(data);
+  function onSubmit() {
+    console.log({ email, password });
+  }
+
+  function onEmail(e) {
+    setEmail(e.target.value);
+  }
+
+  function onPassword(e) {
+    setPassword(e.target.value);
   }
 
   return (
@@ -42,7 +52,9 @@ function LoginForm() {
             fullWidth
             id="email"
             label="Email"
+            value={email}
             {...register(`email`)}
+            onChange={onEmail}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.email?.message}</Typography>
         </div>
@@ -52,7 +64,9 @@ function LoginForm() {
             id="password"
             label="Password"
             type="password"
+            value={password}
             {...register(`password`)}
+            onChange={onPassword}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.password?.message}</Typography>
         </div>
