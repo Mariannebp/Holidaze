@@ -4,3 +4,5 @@ export { BoxCardContent } from "./boxCardContent";
 export { ButtonMain, ButtonSecond } from "./buttons";
 export { CardContentCont } from "./cardContentCont";
 export { CardMediaMain, CardMediaPlaceholder } from "./cardMedia";
+export { BoxMain } from "./boxMain";
+export { TextFieldMain } from "./textfieldMain";

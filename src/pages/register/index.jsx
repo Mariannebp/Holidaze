@@ -1,17 +1,19 @@
-import { Typography } from "@mui/material";
 import React from "react";
+import { Typography } from "@mui/material";
+import * as g from "../../styles/global";
+import RegisterForm from "../../components/form/registerForm";
 
+/**
+ * Renders the content for the Register page
+ */
 function Register() {
   return (
-    <>
-      <Typography variant="h1">Register</Typography>
-      <Typography variant="h1">Register</Typography>
-      <Typography variant="h1">Register</Typography>
-      <Typography variant="h1">Register</Typography>
-      <Typography variant="h1">Register</Typography>
-      <Typography variant="h1">Register</Typography>
-      <Typography variant="h1">Register</Typography>
-    </>
+    <g.BoxMain>
+      <g.ContainerCorner>
+        <Typography variant="h1" sx={{ borderBottom: '1px solid' }}>Register</Typography>
+        <RegisterForm />
+      </g.ContainerCorner>
+    </g.BoxMain>
 
   )
 }

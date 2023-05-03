@@ -8,6 +8,7 @@ function useApi(url) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     async function getData() {
@@ -15,7 +16,11 @@ function useApi(url) {
         setIsLoading(true);
         setIsError(false);
 
-        const fetchedData = await fetch(url);
+        const fetchedData = await fetch(url, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         const json = await fetchedData.json();
 
         setData(json);
@@ -28,7 +33,7 @@ function useApi(url) {
     }
 
     getData();
-  }, [url]);
+  }, [url, token]);
   return { data, isLoading, isError };
 }
 

@@ -2,6 +2,8 @@ import { AppBar, Box, Stack, Toolbar, Link } from "@mui/material";
 import logo from "../../assets/images/logo-resized.png";
 import Nav from "./nav";
 import ProfileMenu from "./profilemenu";
+import { ButtonMain } from "../../styles/global";
+import { useNavigate } from "react-router-dom";
 
 const logoStyle = {
   width: '80px',
@@ -13,6 +15,9 @@ const logoStyle = {
  * Displays the content for the header
  */
 function Header() {
+  const navigate = useNavigate();
+  const userInfo = localStorage.getItem("profile");
+
   return (
     <Box sx={{ flexGrow: 1, marginBottom: '100px' }}>
       <AppBar>
@@ -23,7 +28,7 @@ function Header() {
             </Link>
             <Nav />
           </Stack>
-          <ProfileMenu />
+          {userInfo ? <ProfileMenu /> : <ButtonMain variant="contained" onClick={() => navigate("/pages/login")}>LOG IN</ButtonMain>}
         </Toolbar>
       </AppBar>
     </Box >

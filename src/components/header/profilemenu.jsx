@@ -2,44 +2,30 @@ import React, { useState } from "react";
 import { Box, Avatar, Menu, MenuItem, Divider, Tooltip, IconButton, ListItemIcon } from "@mui/material";
 import { Logout } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { profileUrl } from "../constants";
+import useApi from "../hooks/useApi";
 
 function ProfileMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const userInfo = JSON.parse(localStorage.getItem("profile"));
+  const { name } = userInfo;
+  const getProfileUrl = profileUrl + name;
+  const { data } = useApi(getProfileUrl);
   const navigate = useNavigate();
-
-  const handleClick = (e) => {
-    setAnchorEl(e.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const handleProfile = () => {
-    navigate("/pages/profile");
-  };
-  const handleVenue = () => {
-    navigate("/pages/new-venue");
-  };
-  const handleAvatar = () => {
-    navigate("/pages/edit-avatar");
-  };
-  const handleLogout = () => {
-    // log out
-    navigate("/");
-  };
 
   return (
     <div>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Tooltip title="Profile menu">
           <IconButton
-            onClick={handleClick}
+            onClick={(e) => setAnchorEl(e.currentTarget)}
             size="small"
             aria-controls={open ? 'profile-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }} />
+            {data.avatar && data.avatar.length ? <Avatar src={data.avatar} alt={data.name} sx={{ width: 40, height: 40 }} /> : <Avatar sx={{ width: 32, height: 32 }} />}
           </IconButton>
         </Tooltip>
       </Box>
@@ -47,20 +33,20 @@ function ProfileMenu() {
         anchorEl={anchorEl}
         id="profile-menu"
         open={open}
-        onClose={handleClose}
-        onClick={handleClose}
+        onClose={() => setAnchorEl(null)}
+        onClick={() => setAnchorEl(null)}
       >
-        <MenuItem onClick={handleProfile}>
+        <MenuItem onClick={() => navigate("/pages/profile")}>
           Profile
         </MenuItem>
-        <MenuItem onClick={handleVenue}>
+        <MenuItem onClick={() => navigate("/pages/new-venue")}>
           New Venue
         </MenuItem>
-        <MenuItem onClick={handleAvatar}>
+        <MenuItem onClick={() => navigate("/pages/edit-avatar")}>
           Edit Avatar
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleLogout}>
+        <MenuItem onClick={() => { localStorage.clear(); navigate("/"); }}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
@@ -69,7 +55,6 @@ function ProfileMenu() {
       </Menu>
     </div>
   )
-
 }
 
 export default ProfileMenu;
