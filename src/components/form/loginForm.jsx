@@ -5,6 +5,8 @@ import * as yup from 'yup';
 import { Box, Typography } from "@mui/material";
 import { red } from "@mui/material/colors";
 import * as g from "../../styles/global";
+import { loginUrl } from "../constants";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -27,21 +29,39 @@ function LoginForm() {
   const { register, handleSubmit, formState: { errors }, } = useForm({ resolver: yupResolver(schema) });
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "Holidaze | Log In";
   })
 
-  function onSubmit() {
-    console.log({ email, password });
-  }
+  /**
+   * Function that sends user information to the API, and stores their profile information in localStorage.
+   */
+  async function onSubmit() {
+    const method = "post";
+    const userLogin = { email, password }
+    const body = JSON.stringify(userLogin);
 
-  function onEmail(e) {
-    setEmail(e.target.value);
-  }
+    const response = await fetch(loginUrl, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method,
+      body
+    })
 
-  function onPassword(e) {
-    setPassword(e.target.value);
+    const { accessToken, ...user } = await response.json()
+
+    localStorage.setItem("token", accessToken)
+    localStorage.setItem("profile", JSON.stringify(user))
+
+    if (response.ok) {
+      alert("You logged in!");
+      navigate("/pages/profile");
+    } else {
+      alert("Something went wrong, please try again")
+    }
   }
 
   return (
@@ -54,7 +74,7 @@ function LoginForm() {
             label="Email"
             value={email}
             {...register(`email`)}
-            onChange={onEmail}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.email?.message}</Typography>
         </div>
@@ -66,7 +86,7 @@ function LoginForm() {
             type="password"
             value={password}
             {...register(`password`)}
-            onChange={onPassword}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.password?.message}</Typography>
         </div>

@@ -5,6 +5,8 @@ import * as yup from 'yup';
 import { Box, Checkbox, FormControlLabel, Typography } from "@mui/material";
 import { red } from "@mui/material/colors";
 import * as g from "../../styles/global";
+import { registerUrl } from "../constants";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -12,6 +14,7 @@ const schema = yup
       .string()
       .min(3, "You need at least 3 characters")
       .max(50, "Your name must be 50 characters or less")
+      .matches(/^[a-zA-Z_]*$/, "Valid characters: a-z, A-Z and underscore.")
       .required("Enter your name"),
     email: yup
       .string()
@@ -43,33 +46,35 @@ function RegisterForm() {
   const [avatar, setAvatar] = useState("");
   const [password, setPassword] = useState("");
   const [venueManager, setVenueManager] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "Holidaze | Register";
   })
 
-  function onSubmit() {
+  /**
+   * Function that sends the register information to the api
+   */
+  async function onSubmit() {
+    const method = "post";
+    const user = { name, email, avatar, password, venueManager }
+    const body = JSON.stringify(user);
+
+    const response = await fetch(registerUrl, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method,
+      body
+    })
+
+    if (response.ok) {
+      alert("Registration was successful");
+      navigate("/pages/login");
+    } else {
+      alert("Something went wrong, please try again")
+    }
     console.log({ name, email, avatar, password, venueManager });
-  }
-
-  function onName(e) {
-    setName(e.target.value);
-  }
-
-  function onEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  function onAvatar(e) {
-    setAvatar(e.target.value);
-  }
-
-  function onPassword(e) {
-    setPassword(e.target.value);
-  }
-
-  function onVenueManager() {
-    setVenueManager(!venueManager);
   }
 
   return (
@@ -82,7 +87,7 @@ function RegisterForm() {
             label="Name"
             value={name}
             {...register(`name`)}
-            onChange={onName}
+            onChange={(e) => setName(e.target.value)}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.name?.message}</Typography>
         </div>
@@ -93,7 +98,7 @@ function RegisterForm() {
             label="Email"
             value={email}
             {...register(`email`)}
-            onChange={onEmail}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.email?.message}</Typography>
         </div>
@@ -105,7 +110,7 @@ function RegisterForm() {
             type="url"
             value={avatar}
             {...register(`avatar`)}
-            onChange={onAvatar}
+            onChange={(e) => setAvatar(e.target.value)}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.avatar?.message}</Typography>
         </div>
@@ -117,7 +122,7 @@ function RegisterForm() {
             type="password"
             value={password}
             {...register(`password`)}
-            onChange={onPassword}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.password?.message}</Typography>
         </div>
@@ -138,7 +143,7 @@ function RegisterForm() {
             id="venueManager"
             value={venueManager}
             {...register(`venueManager`)}
-            onChange={onVenueManager}
+            onChange={() => setVenueManager(!venueManager)}
           />
         </div>
         <g.ButtonMain variant="contained" type="submit">REGISTER</g.ButtonMain>
