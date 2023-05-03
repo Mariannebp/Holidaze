@@ -1,22 +1,22 @@
-import { Typography } from "@mui/material";
 import React from "react";
+import * as g from "../../styles/global";
+import ProfileInfo from "../../components/profile/profileInfo";
+import ProfileBookings from "../../components/profile/profileBookings";
+import ProfileVenues from "../../components/profile/profileVenues";
 
+/**
+ * Renders the content for the profile page
+ */
 function Profile() {
+  const userInfo = JSON.parse(localStorage.getItem("profile"));
+  const { venueManager } = userInfo;
+
   return (
-    <>
-      <Typography variant="h1">Profile</Typography>
-      <Typography variant="h1">Profile</Typography>
-      <Typography variant="h1">Profile</Typography>
-      <Typography variant="h1">Profile</Typography>
-      <Typography variant="h1">Profile</Typography>
-      <Typography variant="h1">Profile</Typography>
-      <Typography variant="h1">Profile</Typography>
-      <Typography variant="h1">Profile</Typography>
-      <Typography variant="h1">Profile</Typography>
-      <Typography variant="h1">Profile</Typography>
-      <Typography variant="h1">Profile</Typography>
-      <Typography variant="h1">Profile</Typography>
-    </>
+    <g.BoxMain>
+      <ProfileInfo />
+      <ProfileBookings />
+      {venueManager ? <ProfileVenues /> : null}
+    </g.BoxMain>
 
   )
 }

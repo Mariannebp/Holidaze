@@ -1,4 +1,5 @@
 import { styled, Card } from "@mui/material";
+import { grey } from "@mui/material/colors";
 
 export const CardCorner = styled(Card)(({ theme }) => ({
   display: 'flex',
@@ -29,5 +30,29 @@ export const CardCorner = styled(Card)(({ theme }) => ({
     height: '400px',
     padding: 'auto 0',
   },
-
 }));
+
+
+export const CardCornerProfile = styled(CardCorner)(({ theme }) => ({
+  width: '638px',
+  height: '200px',
+  border: '1px solid',
+  borderColor: grey.A200,
+
+  '@media (max-width: 750px)': {
+    width: '451px',
+  },
+
+  '@media (max-width: 600px)': {
+    display: 'block',
+    width: '250px',
+    height: '350px',
+  },
+
+  '@media (max-width: 350px)': {
+    display: 'block',
+    width: '200px',
+    height: '370px',
+    padding: 'auto 0',
+  },
+}))
