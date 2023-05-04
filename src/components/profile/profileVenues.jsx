@@ -21,7 +21,7 @@ function ProfileVenues() {
       {data.venues && data.venues.length ?
         <Typography variant="body1">Venues</Typography> :
         <Typography variant="body1">You have no bookings yet</Typography>}
-      <p.CardBoxShadow sx={{ boxShadow: 3 }}>
+      <p.CardBoxShadow sx={{ boxShadow: 5 }}>
         <Link href={`/pages/venue-specific/ID`} key="ID" underline='none'>
           <g.CardCornerProfile>
             {/* {d.media.length ? <g.CardMediaMain component="img" image={d.media[0]} alt={d.name} /> : <g.CardMediaPlaceholder component="img" image={Placeholder} alt={d.name} />} */}

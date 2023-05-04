@@ -22,9 +22,9 @@ function ProfileBookings() {
       {data.bookings && data.bookings.length ?
         <Typography variant="body1">Bookings</Typography> :
         <Typography variant="body1">You have no bookings yet</Typography>}
-      <p.CardBoxShadow>
+      <p.CardBoxShadow sx={{ boxShadow: 5 }}>
         <Link href={`/pages/venue-specific/ID`} key="ID" underline='none'>
-          <g.CardCornerProfile sx={{ boxShadow: 3 }}>
+          <g.CardCornerProfile>
             {/* {d.media.length ? <g.CardMediaMain component="img" image={d.media[0]} alt={d.name} /> : <g.CardMediaPlaceholder component="img" image={Placeholder} alt={d.name} />} */}
             <g.CardMediaPlaceholderProfile component="img" image={Placeholder} alt="Placeholder" />
             <g.BoxCardContent>
