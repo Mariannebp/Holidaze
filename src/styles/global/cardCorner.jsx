@@ -5,7 +5,6 @@ export const CardCorner = styled(Card)(({ theme }) => ({
   width: '700px',
   height: '230px',
   borderRadius: '20px 0',
-  boxShadow: 3,
   margin: "auto auto 20px auto",
   padding: 'auto 0',
 
@@ -29,5 +28,31 @@ export const CardCorner = styled(Card)(({ theme }) => ({
     height: '400px',
     padding: 'auto 0',
   },
-
 }));
+
+
+export const CardCornerProfile = styled(CardCorner)(({ theme }) => ({
+  width: '638px',
+  height: '200px',
+
+  '&:hover': {
+    transform: 'none',
+  },
+
+  '@media (max-width: 750px)': {
+    width: '451px',
+  },
+
+  '@media (max-width: 600px)': {
+    display: 'block',
+    width: '250px',
+    height: '350px',
+  },
+
+  '@media (max-width: 350px)': {
+    display: 'block',
+    width: '200px',
+    height: '370px',
+    padding: 'auto 0',
+  },
+}))

@@ -22,3 +22,23 @@ export const CardContentCont = styled(Box)(({ theme }) => ({
     width: '200px',
   }
 }))
+
+
+export const CardContentContProfile = styled(CardContentCont)(() => ({
+  width: '360px',
+  height: '180px',
+
+  '@media (max-width: 750px)': {
+    width: '220px',
+  },
+
+  '@media (max-width: 600px)': {
+    height: '190px',
+    width: '220px',
+  },
+
+  '@media (max-width: 350px)': {
+    height: '205px',
+    width: '170px',
+  }
+}))
