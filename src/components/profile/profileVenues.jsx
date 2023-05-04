@@ -17,7 +17,12 @@ function ProfileVenues() {
 
   return (
     <g.ContainerCorner>
-      <Typography variant="h2">My venues</Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+        <Typography variant="h2" >My venues</Typography>
+        <Link href="/pages/new-venue">
+          <g.ButtonSecond variant="contained" sx={{ width: '120px', margin: 'auto 0' }}>New Venue</g.ButtonSecond>
+        </Link>
+      </Box>
       {data.venues && data.venues.length ?
         <Typography variant="body1">Venues</Typography> :
         <Typography variant="body1">You have no bookings yet</Typography>}
@@ -46,7 +51,7 @@ function ProfileVenues() {
           </g.CardCornerProfile>
         </Link>
       </p.CardBoxShadow>
-    </g.ContainerCorner>
+    </g.ContainerCorner >
   )
 }
 
