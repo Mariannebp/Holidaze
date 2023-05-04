@@ -1,12 +1,12 @@
 import React from "react";
 import useApi from "../hooks/useApi";
 import { profileUrl } from "../constants";
-import * as g from "../../styles/global";
-import * as p from "../../styles/profile";
 import { Avatar, Divider, IconButton, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { EditOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router";
+import * as g from "../../styles/global";
+import * as p from "../../styles/profile";
 
 /**
  * Creates the content for the users profile information

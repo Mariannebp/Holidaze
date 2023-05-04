@@ -1,12 +1,10 @@
 import { styled, Card } from "@mui/material";
-import { grey } from "@mui/material/colors";
 
 export const CardCorner = styled(Card)(({ theme }) => ({
   display: 'flex',
   width: '700px',
   height: '230px',
   borderRadius: '20px 0',
-  boxShadow: 3,
   margin: "auto auto 20px auto",
   padding: 'auto 0',
 
@@ -36,8 +34,10 @@ export const CardCorner = styled(Card)(({ theme }) => ({
 export const CardCornerProfile = styled(CardCorner)(({ theme }) => ({
   width: '638px',
   height: '200px',
-  border: '1px solid',
-  borderColor: grey.A200,
+
+  '&:hover': {
+    transform: 'none',
+  },
 
   '@media (max-width: 750px)': {
     width: '451px',
