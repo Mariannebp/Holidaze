@@ -11,9 +11,10 @@ import SearchBar from "./searchbar";
  * Creates the content for the list of venues to the home page
  */
 function Venues() {
-  const { data, isLoading, isError } = useApi(venuesUrl);
+  const url = venuesUrl + "?sort=created";
+  const { data, isLoading, isError } = useApi(url);
   const [searchInput, setSearchInput] = useState("");
-
+  console.log(data)
   useEffect(() => {
     document.title = "Holidaze | Home";
   })
