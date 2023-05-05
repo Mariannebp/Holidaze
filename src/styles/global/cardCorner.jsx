@@ -52,7 +52,7 @@ export const CardCornerProfile = styled(CardCorner)(({ theme }) => ({
   '@media (max-width: 350px)': {
     display: 'block',
     width: '200px',
-    height: '370px',
+    height: '340px',
     padding: 'auto 0',
   },
 }))

@@ -44,15 +44,31 @@ export const CardMediaPlaceholder = styled(CardMedia)(({ theme }) => ({
 }));
 
 export const CardMediaMainProfile = styled(CardMediaMain)(() => ({
+  '@media (max-width: 750px)': {
+    width: '165px',
+    height: '170px',
+    margin: '15px',
+  },
 
+  '@media (max-width: 600px)': {
+    width: '220px',
+    height: "120px",
+  },
+
+  '@media (max-width: 350px)': {
+    width: '170px',
+    height: '95px',
+    margin: '15px auto',
+  },
 }))
 
 export const CardMediaPlaceholderProfile = styled(CardMediaPlaceholder)(() => ({
   width: '180px',
+  margin: 'auto 35px',
 
   '@media (max-width: 750px)': {
-    width: '150px',
-    margin: 'auto 25px',
+    width: '155px',
+    margin: 'auto 20px',
   },
 
   '@media (max-width: 600px)': {
@@ -62,8 +78,8 @@ export const CardMediaPlaceholderProfile = styled(CardMediaPlaceholder)(() => ({
   },
 
   '@media (max-width: 350px)': {
-    width: '142px',
-    height: '95px',
-    margin: '29px auto',
+    width: '140px',
+    height: '94px',
+    margin: '15px auto',
   },
 }))
