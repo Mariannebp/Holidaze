@@ -28,8 +28,12 @@ function ProfileVenues() {
           <p.CardBoxShadow sx={{ boxShadow: 5 }} key={venue.id}>
             <Link href={`/pages/venue-specific/ID`} key="ID" underline='none'>
               <g.CardCornerProfile>
-                {venue.media.length ? <g.CardMediaMainProfile component="img" image={venue.media[0]} alt={venue.name} /> : <g.CardMediaPlaceholderProfile component="img" image={Placeholder} alt={venue.name} />}
-                <g.BoxCardContent>
+                {venue.media.length ?
+                  <g.CardMediaBoxProfile>
+                    <g.CardMediaMainProfile component="img" image={venue.media[0]} alt={venue.name} />
+                  </g.CardMediaBoxProfile> :
+                  <g.CardMediaPlaceholderProfile component="img" image={Placeholder} alt={venue.name} />}
+                <g.BoxCardContentProfile>
                   <g.CardContentContProfile>
                     <Typography gutterBottom variant="h2" sx={{ borderBottom: '1px solid' }}>
                       {venue.name}
@@ -45,7 +49,7 @@ function ProfileVenues() {
                       <g.ButtonMain variant="contained" sx={{ margin: 'auto 0' }}>VIEW</g.ButtonMain>
                     </Box>
                   </g.CardContentContProfile>
-                </g.BoxCardContent>
+                </g.BoxCardContentProfile>
               </g.CardCornerProfile>
             </Link>
           </p.CardBoxShadow>)))

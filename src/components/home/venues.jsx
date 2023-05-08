@@ -38,8 +38,11 @@ function Venues() {
         .map((d) => (
           <Link href={`/pages/venue-specific/${d.id}`} key={d.id} underline='none'>
             <g.CardCorner >
-              {d.media.length ? <g.CardMediaMain component="img" image={d.media[0]} alt={d.name} /> : <g.CardMediaPlaceholder component="img" image={Placeholder} alt={d.name} />}
-
+              {d.media.length ?
+                <g.CardMediaBox>
+                  <g.CardMediaMain component="img" image={d.media[0]} alt={d.name} />
+                </g.CardMediaBox> :
+                <g.CardMediaPlaceholder component="img" image={Placeholder} alt={d.name} />}
               <g.BoxCardContent>
                 <g.CardContentCont>
                   <Typography gutterBottom variant="h2" sx={{ borderBottom: '1px solid' }}>
@@ -58,21 +61,16 @@ function Venues() {
                       {d.meta.pets ? <Pets sx={{ height: '20px', marginRight: '5px' }} /> : null}
                     </Box>
                   </Box>
-
                   <Box sx={{ textAlign: "end" }}>
                     <Typography variant="h3">$ {d.price},-</Typography>
                     <Typography variant="body2">per night</Typography>
                     <g.ButtonMain variant="contained">VIEW</g.ButtonMain>
                   </Box>
-
                 </g.CardContentCont>
-
               </g.BoxCardContent>
             </g.CardCorner>
           </Link>
-
         ))}
-
     </Container>
   )
 }
