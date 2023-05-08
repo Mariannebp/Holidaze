@@ -17,5 +17,9 @@ export const ButtonSecond = styled(ButtonMain)(({ theme }) => ({
 
   '&:hover': {
     background: theme.palette.primary.dark,
-  }
+  },
+
+  '@media (max-width: 350px)': {
+    fontSize: '0.8rem',
+  },
 }));

@@ -9,7 +9,7 @@ function ProfileMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const userInfo = JSON.parse(localStorage.getItem("profile"));
-  const { name } = userInfo;
+  const { name, venueManager } = userInfo;
   const getProfileUrl = profileUrl + name;
   const { data } = useApi(getProfileUrl);
   const navigate = useNavigate();
@@ -39,9 +39,9 @@ function ProfileMenu() {
         <MenuItem onClick={() => navigate("/pages/profile")}>
           Profile
         </MenuItem>
-        <MenuItem onClick={() => navigate("/pages/new-venue")}>
+        {venueManager ? <MenuItem onClick={() => navigate("/pages/new-venue")}>
           New Venue
-        </MenuItem>
+        </MenuItem> : null}
         <MenuItem onClick={() => navigate("/pages/edit-avatar")}>
           Edit Avatar
         </MenuItem>

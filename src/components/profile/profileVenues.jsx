@@ -12,41 +12,52 @@ import Placeholder from "../../assets/images/placeholder.png";
 function ProfileVenues() {
   const userInfo = JSON.parse(localStorage.getItem("profile"));
   const { name } = userInfo;
-  const getVenuesUrl = profileUrl + name + "?_venues=true";
+  const getVenuesUrl = profileUrl + name + "?_venues=true&sort=created";
   const { data } = useApi(getVenuesUrl);
 
   return (
     <g.ContainerCorner>
-      <Typography variant="h2">My venues</Typography>
-      {data.venues && data.venues.length ?
-        <Typography variant="body1">Venues</Typography> :
-        <Typography variant="body1">You have no bookings yet</Typography>}
-      <p.CardBoxShadow sx={{ boxShadow: 3 }}>
-        <Link href={`/pages/venue-specific/ID`} key="ID" underline='none'>
-          <g.CardCornerProfile>
-            {/* {d.media.length ? <g.CardMediaMain component="img" image={d.media[0]} alt={d.name} /> : <g.CardMediaPlaceholder component="img" image={Placeholder} alt={d.name} />} */}
-            <g.CardMediaPlaceholderProfile component="img" image={Placeholder} alt="Placeholder" />
-            <g.BoxCardContent>
-              <g.CardContentContProfile>
-                <Typography gutterBottom variant="h2" sx={{ borderBottom: '1px solid' }}>
-                  Long title to test card setup for best result
-                </Typography>
-                <Box>
-                  <Box>
-                    <Typography variant="body2">City, Country</Typography>
-                    <Typography variant="body2">Max guests: 00</Typography>
-                  </Box>
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Typography variant="body2">Price per night: $1200,-</Typography>
-                  <g.ButtonMain variant="contained" sx={{ margin: 'auto 0' }}>VIEW</g.ButtonMain>
-                </Box>
-              </g.CardContentContProfile>
-            </g.BoxCardContent>
-          </g.CardCornerProfile>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+        <Typography variant="h2" >My venues</Typography>
+        <Link href="/pages/new-venue">
+          <g.ButtonSecond variant="contained" sx={{ width: '120px', margin: 'auto 0' }}>New Venue</g.ButtonSecond>
         </Link>
-      </p.CardBoxShadow>
-    </g.ContainerCorner>
+      </Box>
+      {data.venues && data.venues.length ? (
+        data.venues.map((venue) => (
+          <p.CardBoxShadow sx={{ boxShadow: 5 }} key={venue.id}>
+            <Link href={`/pages/venue-specific/ID`} key="ID" underline='none'>
+              <g.CardCornerProfile>
+                {venue.media.length ?
+                  <g.CardMediaBoxProfile>
+                    <g.CardMediaMainProfile component="img" image={venue.media[0]} alt={venue.name} />
+                  </g.CardMediaBoxProfile> :
+                  <g.CardMediaPlaceholderProfile component="img" image={Placeholder} alt={venue.name} />}
+                <g.BoxCardContentProfile>
+                  <g.CardContentContProfile>
+                    <Typography gutterBottom variant="h2" sx={{ borderBottom: '1px solid' }}>
+                      {venue.name}
+                    </Typography>
+                    <Box>
+                      <Box>
+                        <Typography variant="body2">{venue.location.city}, {venue.location.country}</Typography>
+                        <Typography variant="body2">Max guests: {venue.maxGuests}</Typography>
+                      </Box>
+                    </Box>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Typography variant="body2">Price per night: ${venue.price},-</Typography>
+                      <g.ButtonMain variant="contained" sx={{ margin: 'auto 0' }}>VIEW</g.ButtonMain>
+                    </Box>
+                  </g.CardContentContProfile>
+                </g.BoxCardContentProfile>
+              </g.CardCornerProfile>
+            </Link>
+          </p.CardBoxShadow>)))
+        : <Typography variant="body1">You have no bookings yet</Typography>}
+
+
+
+    </g.ContainerCorner >
   )
 }
 

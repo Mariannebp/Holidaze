@@ -22,6 +22,6 @@ export const CardBoxShadow = styled(Box)(({ theme }) => ({
 
   '@media (max-width: 350px)': {
     width: '200px',
-    height: '370px',
+    height: '340px',
   },
 }));
