@@ -41,7 +41,7 @@ const schema = yup
     meta: yup
       .boolean(),
   })
-// .required();
+  .required();
 
 /**
  * Creates the form for new users to register an account, with validation
@@ -77,7 +77,6 @@ function NewVenueForm() {
    * Function that sends the information about the new venue to the api
    */
   async function onSubmit(e) {
-    // e.preventDefault();
 
     const token = localStorage.getItem("token");
     const method = "post";
@@ -96,18 +95,17 @@ function NewVenueForm() {
 
     if (response.ok) {
       alert("Your venue is published!");
-      return await response.json();
-      // navigate("/pages/profile");
+      // return await response.json();
+      navigate("/pages/profile");
     } else {
       alert("Something went wrong, please try again")
     }
     console.log(venue);
   }
 
-  // const handleMediaChange = (e) => {
-  //   e.preventDefault();
-  //   setMedia((e) => setMedia(existMedia => [...existMedia, e.target.value]))
-  // }
+  const handleMediaChange = (e) => {
+    setMedia(existMedia => [...existMedia, e.target.value])
+  }
 
   const handleLocationChange = (e) => {
     setLocation({
@@ -157,11 +155,10 @@ function NewVenueForm() {
             type="url"
             value={media}
             {...register(`media`)}
-            onChange={(e) => setMedia([e.target.value])}
+            onChange={handleMediaChange}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
-
         <div>
           <g.TextFieldMain
             fullWidth
