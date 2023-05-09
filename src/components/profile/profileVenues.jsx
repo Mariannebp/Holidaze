@@ -26,7 +26,7 @@ function ProfileVenues() {
       {data.venues && data.venues.length ? (
         data.venues.map((venue) => (
           <p.CardBoxShadow sx={{ boxShadow: 5 }} key={venue.id}>
-            <Link href={`/pages/venue-specific/ID`} key="ID" underline='none'>
+            <Link href={`/pages/venue-specific/${venue.id}`} key={venue.id} underline='none'>
               <g.CardCornerProfile>
                 {venue.media.length ?
                   <g.CardMediaBoxProfile>

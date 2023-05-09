@@ -1,22 +1,14 @@
-import { Typography } from "@mui/material";
 import React from "react";
+import VenueSpecific from "../../components/venue-specific.jsx/venueSpecific";
+import * as g from "../../styles/global";
 
 function Venue() {
   return (
-    <>
-      <Typography variant="h1"> Venue</Typography>
-      <Typography variant="h1"> Venue</Typography>
-      <Typography variant="h1"> Venue</Typography>
-      <Typography variant="h1"> Venue</Typography>
-      <Typography variant="h1"> Venue</Typography>
-      <Typography variant="h1"> Venue</Typography>
-      <Typography variant="h1"> Venue</Typography>
-      <Typography variant="h1"> Venue</Typography>
-      <Typography variant="h1"> Venue</Typography>
-      <Typography variant="h1"> Venue</Typography>
-      <Typography variant="h1"> Venue</Typography>
-      <Typography variant="h1"> Venue</Typography>
-    </>
+    <g.BoxMain>
+      <g.ContainerCorner>
+        <VenueSpecific />
+      </g.ContainerCorner>
+    </g.BoxMain>
   )
 }
 
