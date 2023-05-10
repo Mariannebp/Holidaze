@@ -95,7 +95,6 @@ function NewVenueForm() {
 
     if (response.ok) {
       alert("Your venue is published!");
-      // return await response.json();
       navigate("/pages/profile");
     } else {
       alert("Something went wrong, please try again")

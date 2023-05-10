@@ -9,6 +9,7 @@ import Register from './pages/register';
 import Login from './pages/login';
 import Venue from './pages/venue-specific';
 import Avatar from './pages/avatar';
+import EditVenue from './pages/edit-venue.jsx';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/pages/login" element={<Login />} />
         <Route path="/pages/venue-specific/:id" element={<Venue />} />
         <Route path="/pages/edit-avatar" element={<Avatar />} />
+        <Route path="/pages/edit-venue" element={<EditVenue />} />
       </Route>
     </Routes >
 
