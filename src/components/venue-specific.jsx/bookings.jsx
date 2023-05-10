@@ -20,7 +20,7 @@ function VenueBookings() {
   }
 
   return (
-    <Box sx={{ maxWidth: '300px' }}>
+    <Box sx={{ maxWidth: '300px', marginTop: '30px' }}>
       <Typography variant="h2" sx={{ marginBottom: '15px' }}>Bookings</Typography>
       {data.bookings && data.bookings.length ?
         (data.bookings.map((d) => (
