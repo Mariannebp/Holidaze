@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useApi from "../hooks/useApi";
 import { venuesUrl } from "../constants";
-import { Avatar, Box, Container, Divider, Typography } from "@mui/material";
+import { Avatar, Box, Container, Typography } from "@mui/material";
 import { DirectionsCar, FreeBreakfast, LocationOnOutlined, Pets, Wifi } from "@mui/icons-material";
 import * as s from "../../styles/specific";
 import placeholder from "../../assets/images/placeholder.png";
