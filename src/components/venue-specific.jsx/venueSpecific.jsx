@@ -38,8 +38,6 @@ function VenueSpecific() {
     location = <Typography variant="body2">Mystery Location</Typography>
   }
 
-  // console.log(data);
-
   return (
     <Container disableGutters  >
       <Typography variant="h1" sx={{ borderBottom: '1px solid' }}>{data.name}</Typography>
