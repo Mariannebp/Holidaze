@@ -8,7 +8,7 @@ import * as p from "../../styles/profile";
 
 function VenueBookings() {
   let { id } = useParams();
-  const specific = id + '?_bookings=true'
+  const specific = id + '?_bookings=true';
   const { data, isLoading, isError } = useApi(venuesUrl + specific);
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
 

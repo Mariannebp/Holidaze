@@ -38,7 +38,7 @@ function VenueSpecific() {
     location = <Typography variant="body2">Mystery Location</Typography>
   }
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <Container disableGutters  >
@@ -91,9 +91,6 @@ function VenueSpecific() {
         <Typography variant="body1">{data.description}</Typography>
       </Box>
       <s.BoxSpecific>
-        <s.BoxInner>
-          <Typography variant="h2" sx={{ marginBottom: '10px' }}>Location</Typography>
-        </s.BoxInner>
         <s.BoxInner>
           <Typography variant="h2" sx={{ marginBottom: '10px' }}>Book your stay</Typography>
           <BookStay />
