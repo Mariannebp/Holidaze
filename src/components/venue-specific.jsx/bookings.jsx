@@ -6,6 +6,9 @@ import { Box, Typography } from "@mui/material";
 import * as g from "../../styles/global";
 import * as p from "../../styles/profile";
 
+/**
+ * Creates the content for viewing bookings a mangers venue on profile page
+ */
 function VenueBookings() {
   let { id } = useParams();
   const specific = id + '?_bookings=true';
