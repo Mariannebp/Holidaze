@@ -13,10 +13,6 @@ export const ProfileBox = styled(Box)(({ theme }) => ({
     flexDirection: 'column-reverse',
     alignItems: 'center',
   },
-
-  '@media (max-width: 350px)': {
-    flexDirection: 'column-reverse',
-  },
 }))
 
 export const ProfileInfoBox = styled(Box)(({ theme }) => ({
@@ -29,9 +25,5 @@ export const ProfileInfoBox = styled(Box)(({ theme }) => ({
   '@media (max-width: 600px)': {
     width: '250px',
     marginTop: '20px',
-  },
-
-  '@media (max-width: 350px)': {
-    width: '180px',
   },
 }))

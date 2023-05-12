@@ -20,13 +20,10 @@ export const CardCorner = styled(Card)(({ theme }) => ({
     display: 'block',
     width: '300px',
     height: '400px',
-  },
 
-  '@media (max-width: 350px)': {
-    display: 'block',
-    width: '230px',
-    height: '400px',
-    padding: 'auto 0',
+    '&:hover': {
+      transform: 'none',
+    },
   },
 }));
 
@@ -47,12 +44,5 @@ export const CardCornerProfile = styled(CardCorner)(({ theme }) => ({
     display: 'block',
     width: '250px',
     height: '350px',
-  },
-
-  '@media (max-width: 350px)': {
-    display: 'block',
-    width: '200px',
-    height: '340px',
-    padding: 'auto 0',
   },
 }))

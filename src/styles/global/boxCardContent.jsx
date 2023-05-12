@@ -16,12 +16,6 @@ export const BoxCardContent = styled(Box)(({ theme }) => ({
     marginTop: 0,
     borderLeft: 'none',
   },
-
-  '@media (max-width: 350px)': {
-    width: '230px',
-    marginTop: 0,
-    borderLeft: 'none',
-  },
 }))
 
 export const BoxCardContentProfile = styled(Box)(({ theme }) => ({
@@ -37,12 +31,6 @@ export const BoxCardContentProfile = styled(Box)(({ theme }) => ({
 
   '@media (max-width: 600px)': {
     width: '250px',
-    marginTop: 0,
-    borderLeft: 'none',
-  },
-
-  '@media (max-width: 350px)': {
-    width: '200px',
     marginTop: 0,
     borderLeft: 'none',
   },

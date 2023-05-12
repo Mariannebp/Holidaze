@@ -18,10 +18,9 @@ export const CardBoxShadow = styled(Box)(({ theme }) => ({
   '@media (max-width: 600px)': {
     width: '250px',
     height: '350px',
-  },
 
-  '@media (max-width: 350px)': {
-    width: '200px',
-    height: '340px',
+    '&:hover': {
+      transform: 'none',
+    },
   },
 }));

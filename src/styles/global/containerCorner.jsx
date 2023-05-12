@@ -14,8 +14,4 @@ export const ContainerCorner = styled(Container)(({ theme }) => ({
   '@media (max-width: 600px)': {
     width: '300px',
   },
-
-  '@media (max-width: 350px)': {
-    width: '230px',
-  },
 }))

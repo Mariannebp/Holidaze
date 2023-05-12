@@ -84,7 +84,6 @@ function VenueSpecific() {
             </Box>
           </s.BoxInner>
         </Box>
-
       </s.BoxSpecific>
       <Box sx={{ marginBottom: '30px' }}>
         <Typography variant="h2" sx={{ marginBottom: '10px' }}>Description</Typography>
