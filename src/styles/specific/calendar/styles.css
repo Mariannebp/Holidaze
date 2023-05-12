@@ -3,9 +3,3 @@
     width: 270px;
   }
 }
-
-@media (max-width: 350px) {
-  .calendar {
-    width: 220px;
-  }
-}

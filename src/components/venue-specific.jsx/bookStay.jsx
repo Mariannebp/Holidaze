@@ -59,7 +59,6 @@ function BookStay() {
     return dates;
   };
 
-  const dates = getDatesBetween(dateFrom, dateTo);
 
   /**
    * Sorts out the already booked dates for the venue
@@ -96,8 +95,6 @@ function BookStay() {
     } else {
       alert("Something went wrong, please try again")
     }
-    console.log(body)
-    console.log(dates);
   }
 
   const handleChange = (item) => {

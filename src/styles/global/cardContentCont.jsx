@@ -16,11 +16,6 @@ export const CardContentCont = styled(Box)(({ theme }) => ({
     height: '205px',
     width: '270px',
   },
-
-  '@media (max-width: 350px)': {
-    height: '215px',
-    width: '200px',
-  }
 }))
 
 
@@ -37,8 +32,8 @@ export const CardContentContProfile = styled(CardContentCont)(() => ({
     width: '220px',
   },
 
-  '@media (max-width: 350px)': {
-    height: '205px',
-    width: '170px',
-  }
+  // '@media (max-width: 350px)': {
+  //   height: '205px',
+  //   width: '170px',
+  // }
 }))

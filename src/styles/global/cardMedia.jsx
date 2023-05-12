@@ -14,12 +14,6 @@ export const CardMediaBox = styled(Box)(({ theme }) => ({
     width: '300px',
     position: 'relative',
   },
-
-  '@media (max-width: 350px)': {
-    height: '170px',
-    width: '230px',
-    position: 'relative',
-  },
 }))
 
 export const CardMediaBoxProfile = styled(CardMediaBox)(({ theme }) => ({
@@ -33,11 +27,6 @@ export const CardMediaBoxProfile = styled(CardMediaBox)(({ theme }) => ({
   '@media (max-width: 600px)': {
     width: '250px',
     height: '150px',
-  },
-
-  '@media (max-width: 350px)': {
-    width: '200px',
-    height: '125px',
   },
 }))
 
@@ -53,12 +42,6 @@ export const CardMediaMain = styled(CardMedia)(({ theme }) => ({
   '@media (max-width: 600px)': {
     height: '150px',
     width: '270px',
-    position: 'absolute',
-  },
-
-  '@media (max-width: 350px)': {
-    height: '140px',
-    width: '200px',
     position: 'absolute',
   },
 }));
@@ -78,12 +61,6 @@ export const CardMediaPlaceholder = styled(CardMedia)(({ theme }) => ({
     height: '150px',
     margin: '15px auto',
   },
-
-  '@media (max-width: 350px)': {
-    width: '162px',
-    height: '108px',
-    margin: '29px auto',
-  },
 }));
 
 export const CardMediaMainProfile = styled(CardMediaMain)(() => ({
@@ -100,12 +77,6 @@ export const CardMediaMainProfile = styled(CardMediaMain)(() => ({
     height: '120px',
     margin: '15px',
   },
-
-  '@media (max-width: 350px)': {
-    width: '170px',
-    height: '95px',
-    margin: '15px',
-  },
 }))
 
 export const CardMediaPlaceholderProfile = styled(CardMediaPlaceholder)(() => ({
@@ -120,12 +91,6 @@ export const CardMediaPlaceholderProfile = styled(CardMediaPlaceholder)(() => ({
   '@media (max-width: 600px)': {
     width: '179px',
     height: '120px',
-    margin: '15px auto',
-  },
-
-  '@media (max-width: 350px)': {
-    width: '140px',
-    height: '94px',
     margin: '15px auto',
   },
 }))

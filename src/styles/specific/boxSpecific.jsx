@@ -14,9 +14,9 @@ export const BoxSpecific = styled(Box)(({ theme }) => ({
     display: 'block',
   },
 
-  '@media (max-width: 350px)': {
+  // '@media (max-width: 350px)': {
 
-  },
+  // },
 }));
 
 export const BoxInner = styled(Box)(({ theme }) => ({
@@ -29,9 +29,9 @@ export const BoxInner = styled(Box)(({ theme }) => ({
   '@media (max-width: 600px)': {
   },
 
-  '@media (max-width: 350px)': {
+  // '@media (max-width: 350px)': {
 
-  },
+  // },
 
 }));
 
@@ -46,10 +46,10 @@ export const BoxBorder = styled(Box)(({ theme }) => ({
     margin: 0,
   },
 
-  '@media (max-width: 350px)': {
-    borderRight: 'none',
-    margin: 0,
-  },
+  // '@media (max-width: 350px)': {
+  //   borderRight: 'none',
+  //   margin: 0,
+  // },
 }));
 
 export const BoxImage = styled(Box)(({ theme }) => ({
@@ -64,9 +64,5 @@ export const BoxImage = styled(Box)(({ theme }) => ({
   '@media (max-width: 600px)': {
     width: '270px',
     marginBottom: '10px',
-  },
-
-  '@media (max-width: 350px)': {
-    width: '200px',
   },
 })) 
