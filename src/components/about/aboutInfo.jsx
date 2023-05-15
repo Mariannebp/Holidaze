@@ -13,7 +13,7 @@ function AboutInfo() {
         <Box component="img" src={logo} sx={{ maxWidth: '200px', margin: 'auto' }} />
       </Box>
       <Box>
-        <Typography variant="body1" sx={{ marginBottom: '15px' }}>Holidaze is an online marketplace for renting venues and renting out venues. Thanks to our large community of users the selection of venues available for rent is large and highly varied – and it continues growing each day</Typography>
+        <Typography variant="body1" sx={{ marginBottom: '15px' }}>Holidaze is an online marketplace for renting venues and renting out venues. Thanks to our large community of users the selection of venues available for rent is large and highly varied - and it continues growing each day!</Typography>
         <Box sx={{ marginBottom: '15px' }}>
           <Typography variant="body1">With that amazing selection we are sure you will find your next Holidaze.
           </Typography>
