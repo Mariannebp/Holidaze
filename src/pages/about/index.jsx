@@ -1,23 +1,12 @@
-import { Typography } from "@mui/material";
 import React from "react";
+import * as g from "../../styles/global";
+import AboutInfo from "../../components/about/aboutInfo";
 
 function About() {
   return (
-    <>
-      <Typography variant="h1">About</Typography>
-      <Typography variant="h1">About</Typography>
-      <Typography variant="h1">About</Typography>
-      <Typography variant="h1">About</Typography>
-      <Typography variant="h1">About</Typography>
-      <Typography variant="h1">About</Typography>
-      <Typography variant="h1">About</Typography>
-      <Typography variant="h1">About</Typography>
-      <Typography variant="h1">About</Typography>
-      <Typography variant="h1">About</Typography>
-      <Typography variant="h1">About</Typography>
-      <Typography variant="h1">About</Typography>
-    </>
-
+    <g.BoxMain>
+      <AboutInfo />
+    </g.BoxMain>
   )
 }
 
