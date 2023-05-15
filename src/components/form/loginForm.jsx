@@ -58,7 +58,7 @@ function LoginForm() {
 
     if (response.ok) {
       alert("You logged in!");
-      navigate("/pages/profile");
+      navigate("/");
     } else {
       alert("Something went wrong, please try again")
     }

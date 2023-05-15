@@ -17,7 +17,6 @@ function Profile() {
       <ProfileBookings />
       {venueManager ? <ProfileVenues /> : null}
     </g.BoxMain>
-
   )
 }
 
