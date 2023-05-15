@@ -45,7 +45,7 @@ function Venues() {
                 <g.CardMediaPlaceholder component="img" image={Placeholder} alt={d.name} />}
               <g.BoxCardContent>
                 <g.CardContentCont>
-                  <Typography gutterBottom variant="h2" sx={{ borderBottom: '1px solid' }}>
+                  <Typography gutterBottom variant="h2" sx={{ borderBottom: '1px solid', width: 'inherit' }}>
                     {d.name}
                   </Typography>
                   <Box>
