@@ -17,7 +17,7 @@ const theme = createTheme({
     allVariants: {
       fontFamily: `Questrial, sans-serif`,
       fontWeight: `400`,
-      overflowWrap: 'break-word'
+      overflowWrap: 'break-word',
     },
     h1: {
       fontSize: `2rem`,

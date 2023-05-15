@@ -14,7 +14,7 @@ function Venues() {
   const url = venuesUrl + "?sort=created";
   const { data, isLoading, isError } = useApi(url);
   const [searchInput, setSearchInput] = useState("");
-  console.log(data)
+
   useEffect(() => {
     document.title = "Holidaze | Home";
   })
@@ -30,7 +30,6 @@ function Venues() {
   return (
     <Container disableGutters  >
       <SearchBar searchInput={searchInput} onSearchInput={setSearchInput} data={data} />
-
       {data
         .filter((d) => {
           return searchInput.toLowerCase() === d.name.toLowerCase ? d : d.name.toLowerCase().includes(searchInput.toLowerCase());
