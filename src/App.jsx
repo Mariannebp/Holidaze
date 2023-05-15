@@ -22,6 +22,7 @@ function App() {
         <Route path="/pages/register" element={<Register />} />
         <Route path="/pages/login" element={<Login />} />
         <Route path="/pages/about" element={<About />} />
+
         <Route path="/pages/error" element={user ? <Navigate replace to={"/pages/profile"} /> : <NotLoggedIn />} />
 
         <Route path="/pages/profile" element={user ? <Profile /> : <Navigate replace to={"/pages/error"} />} />
