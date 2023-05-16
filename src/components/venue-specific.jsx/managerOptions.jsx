@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { venuesUrl } from "../constants";
 import { Box, IconButton, Modal, Typography } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
-import { useNavigate, useParams } from "react-router-dom";
 import * as g from "../../styles/global";
-import { venuesUrl } from "../constants";
 
 /**
  * Function that creates the Edit and Delete options for the venue specific is the user has role of venueManager
