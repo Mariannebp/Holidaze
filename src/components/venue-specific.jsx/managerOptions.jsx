@@ -1,28 +1,43 @@
 import React, { useState } from "react";
 import { Box, IconButton, Modal, Typography } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as g from "../../styles/global";
-// import useDelete from "./deleteVenue";
-// import DeleteVenue from "./deleteVenue";
+import { venuesUrl } from "../constants";
 
-const style = {
-  position: 'absolute',
-  top: '25%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'white',
-  boxShadow: 24,
-  p: 4,
-};
-
+/**
+ * Function that creates the Edit and Delete options for the venue specific is the user has role of venueManager
+ */
 function ManagerOptions() {
-  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  let { id } = useParams();
+  const method = "delete";
+  const token = localStorage.getItem("token");
+
+  /**
+   * Function that deletes a venue. 
+   */
+  async function onDelete() {
+    const response = await fetch(venuesUrl + id, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      method
+    })
+    console.log(response)
+    if (response.ok) {
+      alert("Your venue has been deleted");
+      navigate("/pages/profile");
+    } else {
+      alert("Something went wrong, please try again")
+    }
+  }
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  // const handleDelete = () => useDelete(id);
+  const handleDelete = () => onDelete();
 
   return (
     <div>
@@ -39,12 +54,12 @@ function ManagerOptions() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h2">Delete?</Typography>
+        <Box sx={{ position: 'absolute', top: '25%', left: '50%', transform: 'translate(-50%, -50%)', maxWidth: 400, bgcolor: 'white', boxShadow: 24, p: 4 }}>
+          <Typography id="modal-modal-title" variant="h2" sx={{ marginBottom: '10px' }}>Delete?</Typography>
           <Typography id="modal-modal-description" variant="body1">Are you sure you want to delete your venue?</Typography>
-          <Typography id="modal-modal-description" variant="body1">This action is permanent, and can not be undone.</Typography>
-          <Box >
-            <g.ButtonSecond variant="contained" onClick={handleClose}>Delete</g.ButtonSecond>
+          <Typography id="modal-modal-description" variant="body1" sx={{ marginBottom: '10px' }}>This action is permanent, and can not be undone.</Typography>
+          <Box sx={{ display: 'flex' }} >
+            <g.ButtonSecond variant="contained" onClick={handleDelete}>Delete</g.ButtonSecond>
             <g.ButtonMain variant="contained" onClick={handleClose}>Cancel</g.ButtonMain>
           </Box>
         </Box>
