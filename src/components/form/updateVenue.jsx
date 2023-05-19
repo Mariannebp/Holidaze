@@ -106,7 +106,6 @@ function UpdateVenueForm() {
     } else {
       alert("Something went wrong, please try again")
     }
-    console.log(venue);
   }
 
   const handleMediaChange = (e) => {
