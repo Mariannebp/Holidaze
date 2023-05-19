@@ -140,6 +140,8 @@ function NewVenueForm() {
             id="description"
             label="Description"
             value={description}
+            multiline
+            rows={4}
             {...register(`description`)}
             onChange={(e) => setDescription(e.target.value)}
           />
