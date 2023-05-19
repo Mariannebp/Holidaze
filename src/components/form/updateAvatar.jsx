@@ -1,22 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { Box, Typography } from "@mui/material";
 import { profileUrl } from "../constants";
 import { useNavigate } from "react-router-dom";
 import { red } from "@mui/material/colors";
 import * as g from "../../styles/global";
 import useApi from "../hooks/useApi";
-
-const schema = yup
-  .object({
-    avatar: yup
-      .string()
-      .matches(/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/, "Enter a valid url")
-      .required("Enter a valid url"),
-  })
-  .required();
 
 /**
  * Creates the form for updating a users avatar, with validation
@@ -28,7 +17,7 @@ function UpdateAvatar() {
   const putProfileUrl = getProfileUrl + "/media"
   const { data } = useApi(getProfileUrl);
 
-  const { register, handleSubmit, formState: { errors }, } = useForm({ resolver: yupResolver(schema) });
+  const { register, handleSubmit, formState: { errors }, } = useForm();
 
   const [avatar, setAvatar] = useState("");
   useEffect(() => {
@@ -66,6 +55,9 @@ function UpdateAvatar() {
     if (response.ok) {
       alert("Your avatar is updated!");
       navigate("/pages/profile");
+      window.location.reload()
+
+
     } else {
       alert("Something went wrong, please try again")
     }
@@ -82,10 +74,17 @@ function UpdateAvatar() {
             name="avatar"
             type="url"
             value={avatar}
-            {...register(`avatar`)}
+            {...register("avatar", {
+              // required: true,
+              value: { avatar },
+              pattern: {
+                value: /^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/g,
+                message: "Enter a valid url",
+              }
+            })}
             onChange={(e) => setAvatar(e.target.value)}
           />
-          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.avatar?.message}</Typography>
+          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.avatar && errors.avatar.message}</Typography>
         </div>
         <g.ButtonMain variant="contained" type="submit" sx={{ marginTop: '20px' }}>UPDATE</g.ButtonMain>
       </Box>
