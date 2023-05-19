@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, Typography } from "@mui/material";
 import * as g from "../../styles/global";
+import UpdateVenueForm from "../../components/form/updateVenue";
 
 /**
- * Renders the content for the Create New Venue page
+ * Renders the content for Edit Venue page
  */
 function EditVenue() {
   const user = JSON.parse(localStorage.getItem("profile"))
@@ -14,7 +15,7 @@ function EditVenue() {
       {venueManager ?
         <g.ContainerCorner>
           <Typography variant="h1" sx={{ borderBottom: '1px solid' }}>Edit Venue</Typography>
-
+          <UpdateVenueForm />
         </g.ContainerCorner> :
         <g.ContainerCorner>
           <Typography variant="h1" sx={{ marginBottom: '15px', fontSize: '1.5rem' }} >Sorry, seems like you don't have access</Typography>

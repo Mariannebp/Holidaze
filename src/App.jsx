@@ -8,9 +8,9 @@ import NewVenue from './pages/new-venue';
 import Register from './pages/register';
 import Login from './pages/login';
 import Venue from './pages/venue-specific';
-import Avatar from './pages/avatar';
 import EditVenue from './pages/edit-venue.jsx';
 import NotLoggedIn from './pages/error';
+import EditAvatar from './pages/edit-avatar';
 
 function App() {
   const user = localStorage.getItem("profile");
@@ -28,8 +28,8 @@ function App() {
         <Route path="/pages/profile" element={user ? <Profile /> : <Navigate replace to={"/pages/error"} />} />
         <Route path="/pages/new-venue" element={user ? <NewVenue /> : <Navigate replace to={"/pages/error"} />} />
         <Route path="/pages/venue-specific/:id" element={user ? <Venue /> : <Navigate replace to={"/pages/error"} />} />
-        <Route path="/pages/edit-avatar" element={user ? <Avatar /> : <Navigate replace to={"/pages/error"} />} />
-        <Route path="/pages/edit-venue" element={user ? <EditVenue /> : <Navigate replace to={"/pages/error"} />} />
+        <Route path="/pages/edit-avatar" element={user ? <EditAvatar /> : <Navigate replace to={"/pages/error"} />} />
+        <Route path="/pages/edit-venue/:id" element={user ? <EditVenue /> : <Navigate replace to={"/pages/error"} />} />
       </Route>
     </Routes >
   );

@@ -42,7 +42,7 @@ function ManagerOptions() {
   return (
     <div>
       <Box sx={{ textAlign: 'end' }}>
-        <IconButton onClick={() => navigate("/pages/edit-venue")}>
+        <IconButton href={`/pages/edit-venue/${id}`}>
           <Edit />
         </IconButton>
         <IconButton onClick={handleOpen} >

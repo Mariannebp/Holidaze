@@ -59,6 +59,7 @@ function LoginForm() {
     if (response.ok) {
       alert("You logged in!");
       navigate("/");
+      window.location.reload();
     } else {
       alert("Something went wrong, please try again")
     }
