@@ -56,8 +56,6 @@ function UpdateAvatar() {
       alert("Your avatar is updated!");
       navigate("/pages/profile");
       window.location.reload()
-
-
     } else {
       alert("Something went wrong, please try again")
     }
@@ -75,7 +73,7 @@ function UpdateAvatar() {
             type="url"
             value={avatar}
             {...register("avatar", {
-              // required: true,
+              required: true,
               value: { avatar },
               pattern: {
                 value: /^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/g,
