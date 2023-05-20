@@ -102,10 +102,6 @@ function NewVenueForm() {
     console.log(venue);
   }
 
-  const handleMediaChange = (e) => {
-    setMedia(existMedia => [...existMedia, e.target.value])
-  }
-
   const handleLocationChange = (e) => {
     setLocation({
       ...location,
@@ -156,7 +152,7 @@ function NewVenueForm() {
             type="url"
             value={media}
             {...register(`media`)}
-            onChange={handleMediaChange}
+            onChange={(e) => setMedia([e.target.value])}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
