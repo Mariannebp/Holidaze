@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import * as g from "../../styles/global";
@@ -7,6 +7,10 @@ import * as g from "../../styles/global";
  * Creates the content for the not logged in error information
  */
 function RedirectInfo() {
+
+  useEffect(() => {
+    document.title = `Holidaze | Error`;
+  })
 
   return (
     <g.BoxMain>

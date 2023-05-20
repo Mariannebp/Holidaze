@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useApi from "../hooks/useApi";
 import { profileUrl } from "../constants";
 import { Avatar, Divider, IconButton, Typography } from "@mui/material";
@@ -18,6 +18,10 @@ function ProfileInfo() {
   const { data } = useApi(getProfileUrl);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    document.title = `Holidaze | ${name}`;
+  })
+
   return (
     <g.ContainerCorner>
       <p.ProfileBox>
@@ -28,7 +32,7 @@ function ProfileInfo() {
         </p.ProfileInfoBox>
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
           <Avatar src={data.avatar} alt={data.name} sx={{ height: '80px', width: '80px', marginLeft: '50px' }} />
-          <IconButton sx={{ height: '50x', width: '50px' }} onClick={() => navigate("/pages/edit-avatar")}>
+          <IconButton sx={{ height: '50x', width: '50px' }} aria-label="edit avatar" onClick={() => navigate("/pages/edit-avatar")}>
             <EditOutlined />
           </IconButton>
         </Box>

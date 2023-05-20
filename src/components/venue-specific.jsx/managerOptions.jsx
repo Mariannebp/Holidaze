@@ -42,10 +42,10 @@ function ManagerOptions() {
   return (
     <div>
       <Box sx={{ textAlign: 'end' }}>
-        <IconButton href={`/pages/edit-venue/${id}`}>
+        <IconButton aria-label="edit venue" href={`/pages/edit-venue/${id}`}>
           <Edit />
         </IconButton>
-        <IconButton onClick={handleOpen} >
+        <IconButton aria-label="delete venue" onClick={handleOpen} >
           <Delete />
         </IconButton>
       </Box>

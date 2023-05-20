@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useApi from "../hooks/useApi";
 import { venuesUrl } from "../constants";
-import { Avatar, Box, Container, Typography } from "@mui/material";
+import { Avatar, Box, CircularProgress, Container, Typography } from "@mui/material";
 import { DirectionsCar, FreeBreakfast, LocationOnOutlined, Pets, Wifi } from "@mui/icons-material";
 import * as s from "../../styles/specific";
 import placeholder from "../../assets/images/placeholder.png";
@@ -25,7 +25,8 @@ function VenueSpecific() {
   })
 
   if (isLoading) {
-    return <Typography variant="h1">Loading...</Typography>;
+    return <Box sx={{ textAlign: 'center' }}><CircularProgress disableShrink size={100}
+      thickness={2} sx={{ color: 'white', margin: '15px auto' }} /></Box>;
   }
   if (isError) {
     return <Typography variant="body1">Oops, something seems to have gone wrong here..</Typography>;
@@ -95,8 +96,8 @@ function VenueSpecific() {
       </s.BoxSpecific>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         {data.owner && data.owner.avatar ?
-          <Avatar src={data.owner.avatar} sx={{ width: '30px', height: '30px' }} />
-          : <Avatar sx={{ width: '30px', height: '30px' }} />
+          <Avatar src={data.owner.avatar} alt="Owner avatar" sx={{ width: '30px', height: '30px' }} />
+          : <Avatar alt="Owner avatar" sx={{ width: '30px', height: '30px' }} />
         }
         {data.owner && data.owner.name ?
           <Typography variant="body2" color="primary" sx={{ marginLeft: '5px' }}>{data.owner.name}, owner</Typography> : <Typography variant="body2" color="primary" sx={{ marginLeft: '5px' }}>Name, owner</Typography>
