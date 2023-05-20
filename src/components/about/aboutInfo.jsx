@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Link, Typography } from "@mui/material";
 import * as g from "../../styles/global";
 import logo from "../../assets/images/logo-resized.png";
 
 function AboutInfo() {
   const user = localStorage.getItem("profile");
+
+  useEffect(() => {
+    document.title = `Holidaze | About`;
+  })
 
   return (
     <g.ContainerCorner>

@@ -13,11 +13,13 @@ import useApi from "../hooks/useApi";
 function UpdateVenueForm() {
   let { id } = useParams();
   const { data } = useApi(venuesUrl + id);
-
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const [name, setName] = useState("");
+  useEffect(() => {
+    document.title = "Holidaze | Edit Venue";
+  })
 
+  const [name, setName] = useState("");
   useEffect(() => {
     if (data) {
       setName(data.name)
@@ -74,10 +76,6 @@ function UpdateVenueForm() {
   const { city, country } = location;
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    document.title = "Holidaze | Create New Venue";
-  })
 
   /**
    * Function that sends the updated information about the new venue to the api

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useApi from "../hooks/useApi";
 import { profileUrl } from "../constants";
 import { Avatar, Divider, IconButton, Typography } from "@mui/material";
@@ -17,6 +17,10 @@ function ProfileInfo() {
   const getProfileUrl = profileUrl + name;
   const { data } = useApi(getProfileUrl);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = `Holidaze | ${name}`;
+  })
 
   return (
     <g.ContainerCorner>
