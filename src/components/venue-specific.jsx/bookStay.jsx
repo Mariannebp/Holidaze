@@ -121,13 +121,13 @@ function BookStay() {
         <Box sx={{ maxWidth: '300px', position: 'relative', margin: 0 }}>
           <DateRange
             locale={enGB}
-            className="calendar"
             showSelectionPreview={true}
             moveRangeOnFirstSelection={false}
             months={1}
             minDate={new Date()}
             disabledDates={bookedDates}
             ranges={datePicker}
+            rangeColors={["#89562f"]}
             onChange={handleChange}
             direction="horizontal"
           />
