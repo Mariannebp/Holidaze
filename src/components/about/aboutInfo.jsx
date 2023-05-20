@@ -14,7 +14,7 @@ function AboutInfo() {
     <g.ContainerCorner>
       <Typography variant="h1" sx={{ marginBottom: '10px', borderBottom: '1px solid' }}>About</Typography>
       <Box sx={{ textAlign: 'center', marginBottom: '10px' }}>
-        <Box component="img" src={logo} sx={{ maxWidth: '200px', margin: 'auto' }} />
+        <Box component="img" src={logo} alt="Holidaze logo" sx={{ maxWidth: '200px', margin: 'auto' }} />
       </Box>
       <Box>
         <Typography variant="body1" sx={{ marginBottom: '15px' }}>Holidaze is an online marketplace for renting venues and renting out venues. Thanks to our large community of users the selection of venues available for rent is large and highly varied - and it continues growing each day!</Typography>

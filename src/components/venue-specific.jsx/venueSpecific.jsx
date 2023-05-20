@@ -96,8 +96,8 @@ function VenueSpecific() {
       </s.BoxSpecific>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         {data.owner && data.owner.avatar ?
-          <Avatar src={data.owner.avatar} sx={{ width: '30px', height: '30px' }} />
-          : <Avatar sx={{ width: '30px', height: '30px' }} />
+          <Avatar src={data.owner.avatar} alt="Owner avatar" sx={{ width: '30px', height: '30px' }} />
+          : <Avatar alt="Owner avatar" sx={{ width: '30px', height: '30px' }} />
         }
         {data.owner && data.owner.name ?
           <Typography variant="body2" color="primary" sx={{ marginLeft: '5px' }}>{data.owner.name}, owner</Typography> : <Typography variant="body2" color="primary" sx={{ marginLeft: '5px' }}>Name, owner</Typography>
