@@ -2,12 +2,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useApi from "../hooks/useApi";
 import { venuesUrl } from "../constants";
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import * as g from "../../styles/global";
 import * as p from "../../styles/profile";
 
 /**
- * Creates the content for viewing bookings a mangers venue on profile page
+ * Creates the content for viewing bookings on a mangers venue on profile page
  */
 function VenueBookings() {
   let { id } = useParams();
@@ -16,7 +16,8 @@ function VenueBookings() {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
 
   if (isLoading) {
-    return <Typography variant="body1">Loading bookings...</Typography>;
+    return <Box sx={{ textAlign: 'center' }}><CircularProgress disableShrink size={100}
+      thickness={2} color="primary" sx={{ margin: '15px auto' }} /></Box>;
   }
   if (isError) {
     return <Typography variant="body1">Oops, something seems to have gone wrong here..</Typography>;

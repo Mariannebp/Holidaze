@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useApi from "../hooks/useApi";
 import { venuesUrl } from "../constants";
-import { Avatar, Box, Container, Typography } from "@mui/material";
+import { Avatar, Box, CircularProgress, Container, Typography } from "@mui/material";
 import { DirectionsCar, FreeBreakfast, LocationOnOutlined, Pets, Wifi } from "@mui/icons-material";
 import * as s from "../../styles/specific";
 import placeholder from "../../assets/images/placeholder.png";
@@ -25,7 +25,8 @@ function VenueSpecific() {
   })
 
   if (isLoading) {
-    return <Typography variant="h1">Loading...</Typography>;
+    return <Box sx={{ textAlign: 'center' }}><CircularProgress disableShrink size={100}
+      thickness={2} sx={{ color: 'white', margin: '15px auto' }} /></Box>;
   }
   if (isError) {
     return <Typography variant="body1">Oops, something seems to have gone wrong here..</Typography>;

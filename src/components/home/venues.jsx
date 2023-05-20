@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { venuesUrl } from "../../components/constants";
 import useApi from "../../components/hooks/useApi.jsx";
-import { Typography, Box, Container, Link } from "@mui/material";
+import { Typography, Box, Container, Link, CircularProgress } from "@mui/material";
 import * as g from "../../styles/global";
 import { Circle, Wifi, DirectionsCar, FreeBreakfast, Pets } from "@mui/icons-material";
 import Placeholder from "../../assets/images/placeholder.png";
@@ -20,7 +20,8 @@ function Venues() {
   })
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <Box sx={{ textAlign: 'center' }}><CircularProgress disableShrink size={100}
+      thickness={2} sx={{ color: 'white', margin: '15px auto' }} /></Box>
   }
 
   if (isError) {
