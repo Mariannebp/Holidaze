@@ -12,12 +12,15 @@ import "react-date-range/dist/theme/default.css";
 import { enGB } from "date-fns/locale";
 
 import "../../styles/specific/calendar/styles.css"
+import * as s from "../../styles/specific";
+import { red } from "@mui/material/colors";
 
 /**
  * Creates the form for new bookings, with validation
  */
 function BookStay() {
-  const { register, handleSubmit } = useForm();
+  // const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   let { id } = useParams();
   const bookings = id + '?_bookings=true';
   const { data } = useApi(venuesUrl + bookings);
@@ -102,13 +105,15 @@ function BookStay() {
   };
 
   const maxGuests = data.maxGuests;
+  const maxGuestAlert = "To many guests, maximum guests: ";
 
   const handleGuests = (e) => {
     const guests = e.target.value;
     if (guests <= maxGuests) {
       setGuests(e.target.value)
-    } else {
-      alert("To many guests");
+    }
+    else {
+      alert(maxGuestAlert + maxGuests);
     }
   }
 
@@ -116,9 +121,9 @@ function BookStay() {
   const totalPrice = nights * data.price;
 
   return (
-    <Box sx={{ maxWidth: '300px' }}>
-      <Box component="form" onSubmit={handleSubmit(onSubmit)}>
-        <Box sx={{ maxWidth: '300px', position: 'relative', margin: 0 }}>
+    <Box >
+      <s.BoxSpecificBook component="form" onSubmit={handleSubmit(onSubmit)}>
+        <s.BoxInner sx={{ position: 'relative', margin: '0' }}>
           <DateRange
             locale={enGB}
             showSelectionPreview={true}
@@ -131,33 +136,37 @@ function BookStay() {
             onChange={handleChange}
             direction="horizontal"
           />
-        </Box>
-        <div>
-          <g.TextFieldMain
-            fullWidth
-            required
-            size="small"
-            type="number"
-            id="guests"
-            label="Guests"
-            {...register(`guests`)}
-            onChange={handleGuests}
-          />
-        </div>
-        <Box sx={{ display: 'flex' }}>
-          <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Nights:</Typography>
-          <Typography variant="body1">{nights > 0 ? nights : 0}</Typography>
-        </Box>
-        <Box sx={{ display: 'flex' }}>
-          <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Price per night: </Typography>
-          <Typography variant="body1">${data.price},-</Typography>
-        </Box>
-        <Box sx={{ display: 'flex' }}>
-          <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Total Price:</Typography>
-          <Typography variant="body1">${nights > 0 ? totalPrice : 0},-</Typography>
-        </Box>
-        <g.ButtonMain variant="contained" type="submit">BOOK</g.ButtonMain>
-      </Box>
+        </s.BoxInner>
+        <s.BoxInner >
+          <Box sx={{ width: '230px' }}>
+            <g.TextFieldMain
+              fullWidth
+              required
+              size="small"
+              type="number"
+              id="guests"
+              label="Guests"
+              {...register(`guests`)}
+              onChange={handleGuests}
+            />
+          </Box>
+          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.guests && errors.guests.message}</Typography>
+          <Box sx={{ display: 'flex' }}>
+            <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Nights:</Typography>
+            <Typography variant="body1">{nights > 0 ? nights : 0}</Typography>
+          </Box>
+          <Box sx={{ display: 'flex' }}>
+            <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Price per night: </Typography>
+            <Typography variant="body1">${data.price},-</Typography>
+          </Box>
+          <Box sx={{ display: 'flex' }}>
+            <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Total Price:</Typography>
+            <Typography variant="body1">${nights > 0 ? totalPrice : 0},-</Typography>
+          </Box>
+          <g.ButtonMain variant="contained" type="submit">BOOK</g.ButtonMain>
+        </s.BoxInner>
+
+      </s.BoxSpecificBook>
     </Box>
   )
 }

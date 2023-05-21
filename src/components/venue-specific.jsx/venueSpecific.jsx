@@ -88,12 +88,12 @@ function VenueSpecific() {
         <Typography variant="h2" sx={{ marginBottom: '10px' }}>Description</Typography>
         <Typography variant="body1">{data.description}</Typography>
       </Box>
-      <s.BoxSpecific>
-        <s.BoxInner>
+      <Box>
+        <Box>
           <Typography variant="h2" sx={{ marginBottom: '10px' }}>Book your stay</Typography>
           <BookStay />
-        </s.BoxInner>
-      </s.BoxSpecific>
+        </Box>
+      </Box>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         {data.owner && data.owner.avatar ?
           <Avatar src={data.owner.avatar} alt="Owner avatar" sx={{ width: '30px', height: '30px' }} />
