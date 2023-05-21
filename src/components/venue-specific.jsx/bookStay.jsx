@@ -10,10 +10,8 @@ import { addDays } from "date-fns";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { enGB } from "date-fns/locale";
-
 import "../../styles/specific/calendar/styles.css"
 import * as s from "../../styles/specific";
-import { red } from "@mui/material/colors";
 
 /**
  * Creates the form for new bookings, with validation
@@ -98,6 +96,7 @@ function BookStay() {
     } else {
       alert("Something went wrong, please try again")
     }
+    console.log(booking)
   }
 
   const handleChange = (item) => {
@@ -146,11 +145,15 @@ function BookStay() {
               type="number"
               id="guests"
               label="Guests"
-              {...register(`guests`)}
+              {...register("guests", {
+                required: true,
+                value: { guests },
+                min: 1,
+                max: parseInt(maxGuests),
+              })}
               onChange={handleGuests}
             />
           </Box>
-          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.guests && errors.guests.message}</Typography>
           <Box sx={{ display: 'flex' }}>
             <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Nights:</Typography>
             <Typography variant="body1">{nights > 0 ? nights : 0}</Typography>
