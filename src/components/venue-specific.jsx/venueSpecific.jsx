@@ -74,6 +74,8 @@ function VenueSpecific() {
               <Pets />
               <Typography variant="body1" sx={{ marginLeft: '5px' }}>Pets allowed</Typography>
             </Box> : null}
+            {data.meta && !data.meta.pets && !data.meta.breakfast && !data.meta.parking && !data.meta.wifi ? <Box sx={{ display: 'flex', marginBottom: '5px' }}>
+              <Typography variant="body1" sx={{ marginLeft: '5px' }}>No extra facilities</Typography></Box> : null}
           </s.BoxInner>
           <s.BoxInner>
             <Typography variant="h2" sx={{ marginBottom: '10px' }}>Details</Typography>
