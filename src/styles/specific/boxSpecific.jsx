@@ -2,9 +2,7 @@ import { styled, Box } from "@mui/material";
 
 export const BoxSpecific = styled(Box)(({ theme }) => ({
   display: 'flex',
-  justifyContent: 'space-between',
   marginBottom: '30px',
-
 
   '@media (max-width: 750px)': {
 
@@ -13,10 +11,20 @@ export const BoxSpecific = styled(Box)(({ theme }) => ({
   '@media (max-width: 600px)': {
     display: 'block',
   },
+}));
 
-  // '@media (max-width: 350px)': {
+export const BoxSpecificBook = styled(BoxSpecific)(({ theme }) => ({
+  justifyContent: 'space-between',
 
-  // },
+  '@media (max-width: 750px)': {
+    display: 'block',
+    justifyContent: 'center',
+
+  },
+
+  '@media (max-width: 600px)': {
+    display: 'block',
+  },
 }));
 
 export const BoxInner = styled(Box)(({ theme }) => ({
@@ -29,14 +37,11 @@ export const BoxInner = styled(Box)(({ theme }) => ({
   '@media (max-width: 600px)': {
   },
 
-  // '@media (max-width: 350px)': {
-
-  // },
-
 }));
 
 export const BoxBorder = styled(Box)(({ theme }) => ({
   borderRight: '1px solid',
+  margin: '0 15px',
 
   '@media (max-width: 750px)': {
     marginRight: '15px',
@@ -45,20 +50,15 @@ export const BoxBorder = styled(Box)(({ theme }) => ({
     borderRight: 'none',
     margin: 0,
   },
-
-  // '@media (max-width: 350px)': {
-  //   borderRight: 'none',
-  //   margin: 0,
-  // },
 }));
 
 export const BoxImage = styled(Box)(({ theme }) => ({
-  width: '300px',
+  width: '380px',
   height: '100%',
 
   '@media (max-width: 750px)': {
-    width: '220px',
-    marginRight: '15px',
+    width: '270px',
+    // marginRight: '15px',
   },
 
   '@media (max-width: 600px)': {

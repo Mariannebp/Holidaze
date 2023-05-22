@@ -56,7 +56,7 @@ function VenueSpecific() {
         <s.BoxBorder />
 
         <Box>
-          <s.BoxInner sx={{ marginBottom: '30px' }}>
+          <Box sx={{ marginBottom: '30px' }}>
             <Typography variant="h2" sx={{ marginBottom: '10px' }}>Facilities</Typography>
             {data.meta && data.meta.wifi ? <Box sx={{ display: 'flex', marginBottom: '5px' }}>
               <Wifi />
@@ -74,26 +74,28 @@ function VenueSpecific() {
               <Pets />
               <Typography variant="body1" sx={{ marginLeft: '5px' }}>Pets allowed</Typography>
             </Box> : null}
-          </s.BoxInner>
-          <s.BoxInner>
+            {data.meta && !data.meta.pets && !data.meta.breakfast && !data.meta.parking && !data.meta.wifi ? <Box sx={{ display: 'flex', marginBottom: '5px' }}>
+              <Typography variant="body1" >No extra facilities</Typography></Box> : null}
+          </Box>
+          <Box>
             <Typography variant="h2" sx={{ marginBottom: '10px' }}>Details</Typography>
             <Box>
               <Typography variant="body1">Max guests: {data.maxGuests}</Typography>
               {data.meta && data.meta.pets ? null : <Typography variant="body1">Pets not allowed</Typography>}
             </Box>
-          </s.BoxInner>
+          </Box>
         </Box>
       </s.BoxSpecific>
       <Box sx={{ marginBottom: '30px' }}>
         <Typography variant="h2" sx={{ marginBottom: '10px' }}>Description</Typography>
         <Typography variant="body1">{data.description}</Typography>
       </Box>
-      <s.BoxSpecific>
-        <s.BoxInner>
+      <Box>
+        <Box>
           <Typography variant="h2" sx={{ marginBottom: '10px' }}>Book your stay</Typography>
           <BookStay />
-        </s.BoxInner>
-      </s.BoxSpecific>
+        </Box>
+      </Box>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         {data.owner && data.owner.avatar ?
           <Avatar src={data.owner.avatar} alt="Owner avatar" sx={{ width: '30px', height: '30px' }} />

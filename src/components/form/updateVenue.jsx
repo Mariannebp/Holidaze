@@ -134,6 +134,7 @@ function UpdateVenueForm() {
             label="Name"
             value={name || ""}
             {...register("name", {
+              required: true,
               value: { name },
               pattern: {
                 value: /^[a-zA-Z ]{3,50}$/g,
@@ -153,10 +154,11 @@ function UpdateVenueForm() {
             multiline
             rows={4}
             {...register("description", {
+              required: true,
               value: { description },
               pattern: {
-                value: /^[ A-Za-z0-9_@.!?,:;]{1,}$/g,
-                message: "Enter a description. Valid characters: lower and capital letters, numbers and !?.,:;",
+                value: /^.{1,}$/g,
+                message: "Enter a description.",
               }
             })}
             onChange={(e) => setDescription(e.target.value)}

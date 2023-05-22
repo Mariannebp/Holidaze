@@ -1,3 +1,7 @@
+.rdrCalendarWrapper {
+  width: 300px;
+}
+
 .rdrDateDisplayItem input,
 .rdrMonthName,
 .rdrWeekDay {

@@ -10,8 +10,8 @@ import { addDays } from "date-fns";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { enGB } from "date-fns/locale";
-
 import "../../styles/specific/calendar/styles.css"
+import * as s from "../../styles/specific";
 
 /**
  * Creates the form for new bookings, with validation
@@ -79,21 +79,27 @@ function BookStay() {
     const method = "post";
     const booking = { dateFrom, dateTo, guests, venueId }
     const body = JSON.stringify(booking);
+    const maxGuests = data.maxGuests;
+    const maxGuestAlert = "To many guests, maximum guests: ";
 
-    const response = await fetch(bookingsUrl, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      method,
-      body
-    })
+    if (guests <= maxGuests) {
+      const response = await fetch(bookingsUrl, {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        method,
+        body
+      })
 
-    if (response.ok) {
-      alert("Thank you for booking your stay!");
-      window.location.reload();
+      if (response.ok) {
+        alert("Thank you for booking your stay!");
+        window.location.reload();
+      } else {
+        alert("Something went wrong, please try again")
+      }
     } else {
-      alert("Something went wrong, please try again")
+      alert(maxGuestAlert + maxGuests)
     }
   }
 
@@ -102,13 +108,14 @@ function BookStay() {
   };
 
   const maxGuests = data.maxGuests;
+  const maxGuestAlert = "To many guests, maximum guests: ";
 
   const handleGuests = (e) => {
-    const guests = e.target.value;
-    if (guests <= maxGuests) {
+    if (e.target.value <= maxGuests) {
       setGuests(e.target.value)
-    } else {
-      alert("To many guests");
+    }
+    else {
+      alert(maxGuestAlert + maxGuests);
     }
   }
 
@@ -116,9 +123,9 @@ function BookStay() {
   const totalPrice = nights * data.price;
 
   return (
-    <Box sx={{ maxWidth: '300px' }}>
-      <Box component="form" onSubmit={handleSubmit(onSubmit)}>
-        <Box sx={{ maxWidth: '300px', position: 'relative', margin: 0 }}>
+    <Box >
+      <s.BoxSpecificBook component="form" onSubmit={handleSubmit(onSubmit)}>
+        <s.BoxInner sx={{ position: 'relative', margin: '0 0 10px 0' }}>
           <DateRange
             locale={enGB}
             showSelectionPreview={true}
@@ -131,33 +138,43 @@ function BookStay() {
             onChange={handleChange}
             direction="horizontal"
           />
-        </Box>
-        <div>
-          <g.TextFieldMain
-            fullWidth
-            required
-            size="small"
-            type="number"
-            id="guests"
-            label="Guests"
-            {...register(`guests`)}
-            onChange={handleGuests}
-          />
-        </div>
-        <Box sx={{ display: 'flex' }}>
-          <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Nights:</Typography>
-          <Typography variant="body1">{nights > 0 ? nights : 0}</Typography>
-        </Box>
-        <Box sx={{ display: 'flex' }}>
-          <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Price per night: </Typography>
-          <Typography variant="body1">${data.price},-</Typography>
-        </Box>
-        <Box sx={{ display: 'flex' }}>
-          <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Total Price:</Typography>
-          <Typography variant="body1">${nights > 0 ? totalPrice : 0},-</Typography>
-        </Box>
-        <g.ButtonMain variant="contained" type="submit">BOOK</g.ButtonMain>
-      </Box>
+        </s.BoxInner>
+        <s.BoxInner >
+          <Box sx={{ width: '230px' }}>
+            <g.TextFieldMain
+              fullWidth
+              required
+              size="small"
+              type="number"
+              id="guests"
+              label="Guests"
+              sx={{ marginTop: '5px' }}
+              {...register("guests", {
+                required: true,
+                value: { maxGuests },
+                min: 1,
+                max: parseInt(maxGuests),
+              })}
+              onChange={handleGuests}
+            />
+            <Typography variant="body2" sx={{ marginBottom: '10px', textAlign: 'right' }}>Max Guests: {maxGuests}</Typography>
+          </Box>
+          <Box sx={{ display: 'flex' }}>
+            <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Nights:</Typography>
+            <Typography variant="body1">{nights > 0 ? nights : 0}</Typography>
+          </Box>
+          <Box sx={{ display: 'flex' }}>
+            <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Price per night: </Typography>
+            <Typography variant="body1">${data.price},-</Typography>
+          </Box>
+          <Box sx={{ display: 'flex' }}>
+            <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Total Price:</Typography>
+            <Typography variant="body1">${nights > 0 ? totalPrice : 0},-</Typography>
+          </Box>
+          <g.ButtonMain variant="contained" type="submit">BOOK</g.ButtonMain>
+        </s.BoxInner>
+
+      </s.BoxSpecificBook>
     </Box>
   )
 }

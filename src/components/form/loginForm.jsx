@@ -57,9 +57,7 @@ function LoginForm() {
     localStorage.setItem("profile", JSON.stringify(user))
 
     if (response.ok) {
-      alert("You logged in!");
-      navigate("/");
-      window.location.reload();
+      navigate("/pages/profile");
     } else {
       alert("Something went wrong, please try again")
     }
@@ -91,7 +89,7 @@ function LoginForm() {
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.password?.message}</Typography>
         </div>
-        <g.ButtonMain variant="contained" type="submit">LOG IN</g.ButtonMain>
+        <g.ButtonMain variant="contained" type="submit" onClick={onSubmit}>LOG IN</g.ButtonMain>
       </Box>
     </Box>
   )
