@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# Project Exam 2 - Holidaze
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Type: Project Exam 2
+- When: spring 2023
+- Where: Front End Development course, Noroff School of technology and digital media.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Index
 
-### `npm start`
+- [Description](#Description)
+- [Built With](#built-with)
+- [Setup and run](#setup-and-run)
+- [Contact](#contact)
+- [Acknoledgements](#acknowledgements)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Description
 
-### `npm test`
+Holidaze is a marketplace website for renting and renting out housing. When registering, users may choose to register with or without a manager role. Non-registered can see the list of venues and may search through them, but only registered users can see the specific venues and make bookings to them.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+On this site the users may do the following:
+- View a list of venues
+- Search for a specific venue
+- A new user with a @stud.noroff.no email may register (regular or manager role)
+- A registered user may log in and out
+- A registered user may update their avatar
+- A registered user may view a specific venue
+- A registered user may view a calendar showing available dates
+- A registered user may create a booking at a venue
+- Managers may also create bookings to the own venues
+- A registered user may view their upcoming bookings
+- A registered user with manager role may create a new venue
+- A registered user with manager role may update a venue they own
+- A registered user with manager role view bookings made on a venue they own
+- A registered user with manager role may delete a venue they own
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Built with
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React
+- Material-UI
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Other tools added to the project
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- react-router-dom
+- react-hook-form
+- yup
+- react-date-range
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Setup and run
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Clone the repo
+https://github.com/Mariannebp/Holidaze
 
-### Code Splitting
+Install
+```md
+npm i
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Run live server
+```md
+npm run start
+```
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contact
 
-### Making a Progressive Web App
+Email:
+mariannebpedersen@gmail.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Link to the project website:
+https://pe2-holidaze.netlify.app/
 
-### Advanced Configuration
+## Acknowledgements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- https://font.google.com
+- https://gist.github.com/miguelmota/7905510
+- Background image - no attribution needed
+- Placeholder image - self made
