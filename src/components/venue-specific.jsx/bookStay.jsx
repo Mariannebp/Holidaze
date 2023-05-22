@@ -17,8 +17,7 @@ import * as s from "../../styles/specific";
  * Creates the form for new bookings, with validation
  */
 function BookStay() {
-  // const { register, handleSubmit } = useForm();
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit } = useForm();
   let { id } = useParams();
   const bookings = id + '?_bookings=true';
   const { data } = useApi(venuesUrl + bookings);
@@ -80,22 +79,30 @@ function BookStay() {
     const method = "post";
     const booking = { dateFrom, dateTo, guests, venueId }
     const body = JSON.stringify(booking);
+    const maxGuests = data.maxGuests;
+    const maxGuestAlert = "To many guests, maximum guests: ";
 
-    const response = await fetch(bookingsUrl, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      method,
-      body
-    })
+    if (guests <= maxGuests) {
+      const response = await fetch(bookingsUrl, {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        method,
+        body
+      })
 
-    if (response.ok) {
-      alert("Thank you for booking your stay!");
-      window.location.reload();
+      if (response.ok) {
+        alert("Thank you for booking your stay!");
+        window.location.reload();
+      } else {
+        alert("Something went wrong, please try again")
+      }
+      // alert("Thank you for booking your stay!");
     } else {
-      alert("Something went wrong, please try again")
+      alert(maxGuestAlert + maxGuests)
     }
+
     console.log(booking)
   }
 
@@ -107,8 +114,8 @@ function BookStay() {
   const maxGuestAlert = "To many guests, maximum guests: ";
 
   const handleGuests = (e) => {
-    const guests = e.target.value;
-    if (guests <= maxGuests) {
+    // const guests = e.target.value;
+    if (e.target.value <= maxGuests) {
       setGuests(e.target.value)
     }
     else {
@@ -147,12 +154,13 @@ function BookStay() {
               label="Guests"
               {...register("guests", {
                 required: true,
-                value: { guests },
+                value: { maxGuests },
                 min: 1,
                 max: parseInt(maxGuests),
               })}
               onChange={handleGuests}
             />
+            <Typography variant="body2" sx={{ marginBottom: '10px', textAlign: 'right' }}>Max Guests: {maxGuests}</Typography>
           </Box>
           <Box sx={{ display: 'flex' }}>
             <Typography variant="body1" color="primary" sx={{ marginRight: '5px' }}>Nights:</Typography>
