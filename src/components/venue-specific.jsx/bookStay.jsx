@@ -98,12 +98,9 @@ function BookStay() {
       } else {
         alert("Something went wrong, please try again")
       }
-      // alert("Thank you for booking your stay!");
     } else {
       alert(maxGuestAlert + maxGuests)
     }
-
-    console.log(booking)
   }
 
   const handleChange = (item) => {
@@ -114,7 +111,6 @@ function BookStay() {
   const maxGuestAlert = "To many guests, maximum guests: ";
 
   const handleGuests = (e) => {
-    // const guests = e.target.value;
     if (e.target.value <= maxGuests) {
       setGuests(e.target.value)
     }

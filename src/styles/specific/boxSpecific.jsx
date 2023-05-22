@@ -2,7 +2,7 @@ import { styled, Box } from "@mui/material";
 
 export const BoxSpecific = styled(Box)(({ theme }) => ({
   display: 'flex',
-  justifyContent: 'space-between',
+  // justifyContent: 'space-between',
   marginBottom: '30px',
 
   '@media (max-width: 750px)': {
@@ -40,6 +40,7 @@ export const BoxInner = styled(Box)(({ theme }) => ({
 
 export const BoxBorder = styled(Box)(({ theme }) => ({
   borderRight: '1px solid',
+  margin: '0 15px',
 
   '@media (max-width: 750px)': {
     marginRight: '15px',
@@ -51,12 +52,12 @@ export const BoxBorder = styled(Box)(({ theme }) => ({
 }));
 
 export const BoxImage = styled(Box)(({ theme }) => ({
-  width: '300px',
+  width: '380px',
   height: '100%',
 
   '@media (max-width: 750px)': {
-    width: '220px',
-    marginRight: '15px',
+    width: '270px',
+    // marginRight: '15px',
   },
 
   '@media (max-width: 600px)': {
