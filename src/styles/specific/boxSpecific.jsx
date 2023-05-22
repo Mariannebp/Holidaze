@@ -2,7 +2,6 @@ import { styled, Box } from "@mui/material";
 
 export const BoxSpecific = styled(Box)(({ theme }) => ({
   display: 'flex',
-  // justifyContent: 'space-between',
   marginBottom: '30px',
 
   '@media (max-width: 750px)': {
@@ -15,10 +14,12 @@ export const BoxSpecific = styled(Box)(({ theme }) => ({
 }));
 
 export const BoxSpecificBook = styled(BoxSpecific)(({ theme }) => ({
+  justifyContent: 'space-between',
 
   '@media (max-width: 750px)': {
     display: 'block',
     justifyContent: 'center',
+
   },
 
   '@media (max-width: 600px)': {

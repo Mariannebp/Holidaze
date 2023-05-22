@@ -125,7 +125,7 @@ function BookStay() {
   return (
     <Box >
       <s.BoxSpecificBook component="form" onSubmit={handleSubmit(onSubmit)}>
-        <s.BoxInner sx={{ position: 'relative', margin: '0' }}>
+        <s.BoxInner sx={{ position: 'relative', margin: '0 0 10px 0' }}>
           <DateRange
             locale={enGB}
             showSelectionPreview={true}
@@ -148,6 +148,7 @@ function BookStay() {
               type="number"
               id="guests"
               label="Guests"
+              sx={{ marginTop: '5px' }}
               {...register("guests", {
                 required: true,
                 value: { maxGuests },
