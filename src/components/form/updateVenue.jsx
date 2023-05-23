@@ -8,7 +8,7 @@ import * as g from "../../styles/global";
 import useApi from "../hooks/useApi";
 
 /**
- * Creates the form for new users to register an account, with validation
+ * Creates the form for editing a venue, with validation
  */
 function UpdateVenueForm() {
   let { id } = useParams();

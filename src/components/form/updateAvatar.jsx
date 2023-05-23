@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
-import { Box, Typography } from "@mui/material";
+import useApi from "../hooks/useApi";
 import { profileUrl } from "../constants";
 import { useNavigate } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
 import { red } from "@mui/material/colors";
 import * as g from "../../styles/global";
-import useApi from "../hooks/useApi";
 
 /**
  * Creates the form for updating a users avatar, with validation

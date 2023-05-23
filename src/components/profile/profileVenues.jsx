@@ -53,9 +53,6 @@ function ProfileVenues() {
             </Link>
           </p.CardBoxShadow>)))
         : <Typography variant="body1">You have no bookings yet</Typography>}
-
-
-
     </Box >
   )
 }

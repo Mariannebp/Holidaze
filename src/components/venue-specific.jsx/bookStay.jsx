@@ -4,14 +4,14 @@ import useApi from "../hooks/useApi";
 import { venuesUrl, bookingsUrl } from "../constants";
 import { Box, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
-import * as g from "../../styles/global";
 import { DateRange } from "react-date-range";
 import { addDays } from "date-fns";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { enGB } from "date-fns/locale";
-import "../../styles/specific/calendar/styles.css"
+import * as g from "../../styles/global";
 import * as s from "../../styles/specific";
+import "../../styles/specific/calendar/styles.css"
 
 /**
  * Creates the form for new bookings, with validation
@@ -170,7 +170,6 @@ function BookStay() {
           </Box>
           <g.ButtonMain variant="contained" type="submit">BOOK</g.ButtonMain>
         </s.BoxInner>
-
       </s.BoxSpecificBook>
     </Box>
   )
