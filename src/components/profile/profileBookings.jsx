@@ -17,8 +17,6 @@ function ProfileBookings() {
   const { data } = useApi(getBookingsUrl);
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
 
-  console.log(data)
-
   return (
     <Box ps={0} sx={{ marginTop: '15px' }}>
       {data && data.length ? (
