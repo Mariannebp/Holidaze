@@ -64,4 +64,37 @@ export const BoxImage = styled(Box)(({ theme }) => ({
     width: '270px',
     marginBottom: '10px',
   },
-})) 
+}))
+
+export const BoxMoreMedia = styled(Box)(({ theme }) => ({
+  marginBottom: '20px',
+  display: 'flex',
+  flexWrap: 'wrap',
+
+  '@media (max-width: 750px)': {
+
+  },
+
+  '@media (max-width: 600px)': {
+    justifyContent: 'center'
+  },
+}))
+
+export const BoxMediaModal = styled(Box)(({ theme }) => ({
+  width: '600px',
+  position: 'absolute',
+  top: '40%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  border: '2px solid #fff',
+  boxShadow: 24,
+
+  '@media (max-width: 750px)': {
+    width: '500px'
+  },
+
+  '@media (max-width: 600px)': {
+    width: '300px',
+    justifyContent: 'center'
+  },
+}))

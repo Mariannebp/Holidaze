@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useApi from "../hooks/useApi";
 import { venuesUrl } from "../constants";
-import { Avatar, Box, CircularProgress, Container, Link, Typography } from "@mui/material";
+import { Avatar, Box, CircularProgress, Container, Link, Modal, Typography } from "@mui/material";
 import { DirectionsCar, FreeBreakfast, LocationOnOutlined, Pets, Wifi } from "@mui/icons-material";
 import * as s from "../../styles/specific";
 import placeholder from "../../assets/images/placeholder.png";
@@ -19,6 +19,10 @@ function VenueSpecific() {
   const { data, isLoading, isError } = useApi(venuesUrl + specific);
   const userInfo = JSON.parse(localStorage.getItem("profile"));
   const { venueManager, name } = userInfo;
+  const [open, setOpen] = useState(false);
+  const [modalSrc, setModalSrc] = useState()
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     document.title = `Holidaze | ${data.name}`;
@@ -39,6 +43,12 @@ function VenueSpecific() {
     location = <Typography variant="body2">Mystery Location</Typography>
   }
 
+  function handleModal(e) {
+    setModalSrc(e.target.src);
+    handleOpen();
+    console.log(modalSrc)
+  }
+
   return (
     <Container disableGutters  >
       {data.status === "Not Found" ? <Box sx={{ textAlign: 'center' }}>
@@ -56,8 +66,12 @@ function VenueSpecific() {
               <ManagerOptions />
               : null}
           </Box>
-          <s.BoxSpecific>
-            {data.media && data.media.length ? <s.BoxImage component="img" src={data.media[0]} alt={data.name} /> : <s.BoxImage component="img" src={placeholder} alt="Placeholder" />}
+          <s.BoxSpecific sx={{ marginBottom: '10px' }}>
+            {data.media && data.media.length ?
+              <Box>
+                <s.BoxImage component="img" src={data.media[0]} alt={data.name} onClick={handleModal} />
+              </Box>
+              : <s.BoxImage component="img" src={placeholder} alt="Placeholder" />}
             <s.BoxBorder />
             <Box>
               <Box sx={{ marginBottom: '30px' }}>
@@ -90,6 +104,24 @@ function VenueSpecific() {
               </Box>
             </Box>
           </s.BoxSpecific>
+          <s.BoxMoreMedia>
+            {data.media && data.media.length > 1 ? (
+              data.media.slice(1).map((m) => {
+                return (
+                  <Box>
+                    <Box component="img" src={m} alt={data.name} key={m} onClick={handleModal} sx={{ width: '200px', margin: '5px' }} />
+                  </Box>
+                )
+              }))
+              : null}
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-media"
+            >
+              <s.BoxMediaModal id="modal-media" component="img" src={modalSrc} />
+            </Modal>
+          </s.BoxMoreMedia>
           <Box sx={{ marginBottom: '30px' }}>
             <Typography variant="h2" sx={{ marginBottom: '10px' }}>Description</Typography>
             <Typography variant="body1">{data.description}</Typography>
