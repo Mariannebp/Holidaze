@@ -79,10 +79,8 @@ function BookStay() {
     const method = "post";
     const booking = { dateFrom, dateTo, guests, venueId }
     const body = JSON.stringify(booking);
-    const maxGuests = data.maxGuests;
-    const maxGuestAlert = "To many guests, maximum guests: ";
 
-    if (guests <= maxGuests) {
+    if (dateFrom > new Date()) {
       const response = await fetch(bookingsUrl, {
         headers: {
           "Content-Type": "application/json",
@@ -99,7 +97,7 @@ function BookStay() {
         alert("Something went wrong, please try again")
       }
     } else {
-      alert(maxGuestAlert + maxGuests)
+      alert("Your start date must be in the future")
     }
   }
 
@@ -131,7 +129,7 @@ function BookStay() {
             showSelectionPreview={true}
             moveRangeOnFirstSelection={false}
             months={1}
-            minDate={new Date()}
+            minDate={new Date(Date.now() + (3600 * 1000 * 24))}
             disabledDates={bookedDates}
             ranges={datePicker}
             rangeColors={["#89562f"]}
@@ -146,14 +144,13 @@ function BookStay() {
               required
               size="small"
               type="number"
+              inputProps={{ min: 1, max: maxGuests }}
               id="guests"
               label="Guests"
               sx={{ marginTop: '5px' }}
               {...register("guests", {
                 required: true,
                 value: { maxGuests },
-                min: 1,
-                max: parseInt(maxGuests),
               })}
               onChange={handleGuests}
             />
