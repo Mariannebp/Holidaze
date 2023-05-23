@@ -59,7 +59,6 @@ function VenueSpecific() {
           <s.BoxSpecific>
             {data.media && data.media.length ? <s.BoxImage component="img" src={data.media[0]} alt={data.name} /> : <s.BoxImage component="img" src={placeholder} alt="Placeholder" />}
             <s.BoxBorder />
-
             <Box>
               <Box sx={{ marginBottom: '30px' }}>
                 <Typography variant="h2" sx={{ marginBottom: '10px' }}>Facilities</Typography>

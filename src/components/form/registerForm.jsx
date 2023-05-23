@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
+import { registerUrl } from "../constants";
+import { useNavigate } from "react-router-dom";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Box, Checkbox, FormControlLabel, Typography } from "@mui/material";
 import { red } from "@mui/material/colors";
 import * as g from "../../styles/global";
-import { registerUrl } from "../constants";
-import { useNavigate } from "react-router-dom";
 
 const schema = yup
   .object({

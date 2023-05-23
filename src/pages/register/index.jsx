@@ -14,7 +14,6 @@ function Register() {
         <RegisterForm />
       </g.ContainerCorner>
     </g.BoxMain>
-
   )
 }
 

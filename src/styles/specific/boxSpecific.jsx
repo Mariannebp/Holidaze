@@ -58,7 +58,6 @@ export const BoxImage = styled(Box)(({ theme }) => ({
 
   '@media (max-width: 750px)': {
     width: '270px',
-    // marginRight: '15px',
   },
 
   '@media (max-width: 600px)': {

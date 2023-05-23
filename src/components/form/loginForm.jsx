@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
+import { loginUrl } from "../constants";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useNavigate } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import { red } from "@mui/material/colors";
 import * as g from "../../styles/global";
-import { loginUrl } from "../constants";
-import { useNavigate } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -36,7 +36,7 @@ function LoginForm() {
   })
 
   /**
-   * Function that sends user information to the API, and stores their profile information in localStorage.
+   * Function that sends user information to the API when user logs in, and stores their profile information in localStorage.
    */
   async function onSubmit() {
     const method = "post";

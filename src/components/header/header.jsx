@@ -5,12 +5,6 @@ import ProfileMenu from "./profilemenu";
 import { ButtonMain } from "../../styles/global";
 import { useNavigate } from "react-router-dom";
 
-const logoStyle = {
-  width: '80px',
-  height: '80px',
-  marginTop: '5px',
-}
-
 /**
  * Displays the content for the header
  */
@@ -24,7 +18,7 @@ function Header() {
         <Toolbar sx={{ backgroundColor: 'white', position: 'fixed', width: '100%', boxShadow: 4, paddingLeft: '24px' }}>
           <Stack direction="row" spacing={{ xs: 1, sm: 4 }} sx={{ flexGrow: 1, alignItems: "center" }} >
             <Link href="/">
-              <img src={logo} alt="Logo" style={logoStyle} />
+              <Box component="img" src={logo} sx={{ width: '80px', height: '80px', marginTop: '5px', }} />
             </Link>
             <Nav />
           </Stack>

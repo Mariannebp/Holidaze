@@ -3,6 +3,9 @@ import { Link, Typography } from "@mui/material";
 import * as g from "../../styles/global";
 import LoginForm from "../../components/form/loginForm";
 
+/**
+ * Renders the content for the log in page
+ */
 function Login() {
   return (
     <g.BoxMain>

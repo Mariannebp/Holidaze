@@ -44,7 +44,7 @@ const schema = yup
   .required();
 
 /**
- * Creates the form for new users to register an account, with validation
+ * Creates the form for for creating a new venue, with validation
  */
 function NewVenueForm() {
   const { register, handleSubmit, formState: { errors }, } = useForm({ resolver: yupResolver(schema) });

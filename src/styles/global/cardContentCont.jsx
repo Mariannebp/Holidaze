@@ -31,9 +31,4 @@ export const CardContentContProfile = styled(CardContentCont)(() => ({
     height: '190px',
     width: '220px',
   },
-
-  // '@media (max-width: 350px)': {
-  //   height: '205px',
-  //   width: '170px',
-  // }
 }))
