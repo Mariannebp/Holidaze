@@ -18,8 +18,7 @@ function ProfileBookings() {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
 
   return (
-    <g.ContainerCorner>
-      <Typography variant="h2" sx={{ marginBottom: '10px' }}>My bookings</Typography>
+    <Box ps={0} sx={{ marginTop: '15px' }}>
       {data.bookings && data.bookings.length ? (
         data.bookings.map((booking) => {
           const filteredDates = new Date(booking.dateFrom) >= new Date()
@@ -55,12 +54,11 @@ function ProfileBookings() {
               </Link>
             </p.CardBoxShadow>
           )
-
         })
       )
         :
         <Typography variant="body1">You have no bookings yet</Typography>}
-    </g.ContainerCorner >
+    </Box >
   )
 }
 

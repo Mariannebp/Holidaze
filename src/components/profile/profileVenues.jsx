@@ -16,9 +16,8 @@ function ProfileVenues() {
   const { data } = useApi(getVenuesUrl);
 
   return (
-    <g.ContainerCorner>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
-        <Typography variant="h2" >My venues</Typography>
+    <Box ps={0} sx={{ marginTop: '15px' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'end', alignItems: 'center', marginBottom: '15px' }}>
         <Link href="/pages/new-venue">
           <g.ButtonSecond variant="contained" sx={{ width: '120px', margin: 'auto 0' }}>New Venue</g.ButtonSecond>
         </Link>
@@ -57,7 +56,7 @@ function ProfileVenues() {
 
 
 
-    </g.ContainerCorner >
+    </Box >
   )
 }
 
