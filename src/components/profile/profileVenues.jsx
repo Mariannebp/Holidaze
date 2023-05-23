@@ -52,7 +52,7 @@ function ProfileVenues() {
               </g.CardCornerProfile>
             </Link>
           </p.CardBoxShadow>)))
-        : <Typography variant="body1">You have no bookings yet</Typography>}
+        : <Typography variant="body1">You have no venues yet</Typography>}
     </Box >
   )
 }
