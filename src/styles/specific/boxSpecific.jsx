@@ -85,7 +85,6 @@ export const BoxMediaModal = styled(Box)(({ theme }) => ({
   position: 'absolute',
   top: '40%',
   left: '50%',
-  marginLeft: '-8px',
   transform: 'translate(-50%, -50%)',
   border: '2px solid #fff',
   boxShadow: 24,
