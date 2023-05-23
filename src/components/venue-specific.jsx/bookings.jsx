@@ -15,6 +15,15 @@ function VenueBookings() {
   const { data, isLoading, isError } = useApi(venuesUrl + specific);
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
 
+  const bookings = data.bookings;
+  let sorted = [];
+  function sorting() {
+    if (bookings) {
+      sorted = bookings.sort((a, b) => new Date(a.dateFrom) - new Date(b.dateFrom))
+    }
+  }
+  sorting()
+
   if (isLoading) {
     return <Box sx={{ textAlign: 'center' }}><CircularProgress disableShrink size={100}
       thickness={2} color="primary" sx={{ margin: '15px auto' }} /></Box>;
@@ -26,8 +35,8 @@ function VenueBookings() {
   return (
     <Box sx={{ maxWidth: '300px', marginTop: '30px' }}>
       <Typography variant="h2" sx={{ marginBottom: '15px' }}>Bookings</Typography>
-      {data.bookings && data.bookings.length ?
-        (data.bookings.map((d) => {
+      {sorted && sorted.length ?
+        (sorted.map((d) => {
           const filteredDates = new Date(d.dateFrom) >= new Date()
           if (!filteredDates) {
             return null;
