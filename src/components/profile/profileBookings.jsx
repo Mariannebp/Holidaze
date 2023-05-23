@@ -13,14 +13,14 @@ import Placeholder from "../../assets/images/placeholder.png";
 function ProfileBookings() {
   const userInfo = JSON.parse(localStorage.getItem("profile"));
   const { name } = userInfo;
-  const getBookingsUrl = profileUrl + name + "?_bookings=true";
+  const getBookingsUrl = profileUrl + name + "/bookings?&sort=dateFrom&sortOrder=asc&_venue=true";
   const { data } = useApi(getBookingsUrl);
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
 
   return (
     <Box ps={0} sx={{ marginTop: '15px' }}>
-      {data.bookings && data.bookings.length ? (
-        data.bookings.map((booking) => {
+      {data && data.length ? (
+        data.map((booking) => {
           const filteredDates = new Date(booking.dateFrom) >= new Date()
           if (!filteredDates) {
             return null;
