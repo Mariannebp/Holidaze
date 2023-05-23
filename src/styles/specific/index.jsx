@@ -1,1 +1,1 @@
-export { BoxSpecific, BoxSpecificBook, BoxInner, BoxBorder, BoxImage, BoxMoreMedia } from "./boxSpecific";
+export { BoxSpecific, BoxSpecificBook, BoxInner, BoxBorder, BoxImage, BoxMoreMedia, BoxMediaModal } from "./boxSpecific";
