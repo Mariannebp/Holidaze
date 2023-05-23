@@ -22,6 +22,39 @@ const schema = yup
       .string()
       .matches(/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/, "Enter a valid url")
       .required("Enter a valid url"),
+    mediaOptional1: yup
+      .string()
+      .matches(/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/, "Enter a valid url")
+      .transform((value, originalValue) => {
+        if (!value) {
+          return null;
+        }
+        return originalValue;
+      })
+      .nullable()
+      .optional(),
+    mediaOptional2: yup
+      .string()
+      .matches(/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/, "Enter a valid url")
+      .transform((value, originalValue) => {
+        if (!value) {
+          return null;
+        }
+        return originalValue;
+      })
+      .nullable()
+      .optional(),
+    mediaOptional3: yup
+      .string()
+      .matches(/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/, "Enter a valid url")
+      .transform((value, originalValue) => {
+        if (!value) {
+          return null;
+        }
+        return originalValue;
+      })
+      .nullable()
+      .optional(),
     city: yup
       .string()
       .required("Enter the city"),
@@ -150,9 +183,48 @@ function NewVenueForm() {
             label="Media"
             name="media"
             type="url"
-            value={media}
+            defaultValue=""
             {...register(`media`)}
-            onChange={(e) => setMedia([e.target.value])}
+            onChange={(e) => setMedia(existMedia => [...existMedia, e.target.value])}
+          />
+          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
+        </div>
+        <div>
+          <g.TextFieldMain
+            fullWidth
+            id="media2"
+            label="Media - optional"
+            name="media2"
+            type="url"
+            defaultValue=""
+            {...register(`mediaOptional1`)}
+            onChange={(e) => setMedia(existMedia => [...existMedia, e.target.value])}
+          />
+          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
+        </div>
+        <div>
+          <g.TextFieldMain
+            fullWidth
+            id="media3"
+            label="Media - optional"
+            name="media3"
+            type="url"
+            defaultValue=""
+            {...register(`mediaOptional2`)}
+            onChange={(e) => setMedia(existMedia => [...existMedia, e.target.value])}
+          />
+          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
+        </div>
+        <div>
+          <g.TextFieldMain
+            fullWidth
+            id="media4"
+            label="Media - optional"
+            name="media4"
+            type="url"
+            defaultValue=""
+            {...register(`mediaOptional3`)}
+            onChange={(e) => setMedia(existMedia => [...existMedia, e.target.value])}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
