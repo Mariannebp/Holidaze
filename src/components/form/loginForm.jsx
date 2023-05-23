@@ -58,6 +58,7 @@ function LoginForm() {
 
     if (response.ok) {
       navigate("/pages/profile");
+      window.location.reload();
     } else {
       alert("Something went wrong, please try again")
     }
