@@ -20,6 +20,8 @@ function VenueSpecific() {
   const userInfo = JSON.parse(localStorage.getItem("profile"));
   const { venueManager, name } = userInfo;
 
+  console.log(data)
+
   useEffect(() => {
     document.title = `Holidaze | ${data.name}`;
   })
@@ -90,6 +92,15 @@ function VenueSpecific() {
               </Box>
             </Box>
           </s.BoxSpecific>
+          <s.BoxMoreMedia>
+            {data.media && data.media.length > 1 ? (
+              data.media.slice(1).map((m) => {
+                return (
+                  <Box component="img" src={m} alt={data.name} key={m} sx={{ width: '200px', margin: '5px' }} />
+                )
+              }))
+              : null}
+          </s.BoxMoreMedia>
           <Box sx={{ marginBottom: '30px' }}>
             <Typography variant="h2" sx={{ marginBottom: '10px' }}>Description</Typography>
             <Typography variant="body1">{data.description}</Typography>

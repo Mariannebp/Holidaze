@@ -64,4 +64,15 @@ export const BoxImage = styled(Box)(({ theme }) => ({
     width: '270px',
     marginBottom: '10px',
   },
+}))
+
+export const BoxMoreMedia = styled(Box)(({ theme }) => ({
+
+  '@media (max-width: 750px)': {
+
+  },
+
+  '@media (max-width: 600px)': {
+    textAlign: 'center'
+  },
 })) 
