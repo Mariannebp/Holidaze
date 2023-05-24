@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
-import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Typography } from "@mui/material";
+import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, IconButton, Typography } from "@mui/material";
 import { venuesUrl } from "../constants";
 import { useNavigate, useParams } from "react-router-dom";
-import { red } from "@mui/material/colors";
+import { indigo, red } from "@mui/material/colors";
 import * as g from "../../styles/global";
 import useApi from "../hooks/useApi";
+import { Add } from "@mui/icons-material";
 
 /**
  * Creates the form for editing a venue, with validation
@@ -25,7 +26,6 @@ function UpdateVenueForm() {
       setName(data.name)
     }
   }, [data]);
-
   const [description, setDescription] = useState("");
   useEffect(() => {
     if (data) {
@@ -33,11 +33,7 @@ function UpdateVenueForm() {
     }
   }, [data]);
   const [media, setMedia] = useState([]);
-  useEffect(() => {
-    if (data && data.media) {
-      setMedia([data.media[0]]);
-    }
-  }, [data]);
+
   const [priceValue, setPriceValue] = useState("");
   useEffect(() => {
     if (data) {
@@ -88,26 +84,111 @@ function UpdateVenueForm() {
 
     const body = JSON.stringify(venue);
 
-    const response = await fetch(venuesUrl + id, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      method,
-      body
-    })
+    if (media.length) {
+      const response = await fetch(venuesUrl + id, {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        method,
+        body
+      })
 
-    if (response.ok) {
-      alert("Your venue is updated!");
-      navigate(`/pages/venue-specific/${id}`)
-      window.location.reload()
+      if (response.ok) {
+        alert("Your venue is updated!");
+        navigate(`/pages/venue-specific/${id}`)
+        window.location.reload()
+      } else {
+        alert("Something went wrong, please try again")
+      }
     } else {
-      alert("Something went wrong, please try again")
+      alert("The media - required field must be confirmed")
     }
   }
 
-  const handleMediaChange = (e) => {
-    setMedia([e.target.value])
+  const [media1, setMedia1] = useState("");
+  useEffect(() => {
+    if (data && data.media) {
+      setMedia1(data.media[0]);
+    }
+  }, [data]);
+
+  const [media2, setMedia2] = useState("");
+  useEffect(() => {
+    if (data && data.media) {
+      setMedia2(data.media[1]);
+    } else {
+      setMedia2("")
+    }
+  }, [data]);
+
+  const [media3, setMedia3] = useState("");
+  useEffect(() => {
+    if (data && data.media) {
+      setMedia3(data.media[2]);
+    } else {
+      setMedia3("")
+    }
+  }, [data]);
+
+  const [media4, setMedia4] = useState("");
+  useEffect(() => {
+    if (data && data.media) {
+      setMedia4(data.media[3]);
+    } else {
+      setMedia4("")
+    }
+  }, [data]);
+
+  const [disabled1, setDisabled1] = useState(false);
+  const [disabled2, setDisabled2] = useState(false);
+  const [disabled3, setDisabled3] = useState(false);
+  const [disabled4, setDisabled4] = useState(false);
+
+  function checkPattern(check) {
+    return (
+      /^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/.test(check)
+    )
+  }
+
+  const handleMedia1Field = () => {
+    if (checkPattern(media1)) {
+      setMedia(existMedia => [...existMedia, media1])
+      document.getElementById("media1").disabled = "true";
+      setDisabled1(true);
+    } else {
+      alert("Enter a valid url")
+    }
+  }
+
+  const handleMedia2Field = () => {
+    if (checkPattern(media2)) {
+      setMedia(existMedia => [...existMedia, media2])
+      document.getElementById("media2").disabled = "true";
+      setDisabled2(true);
+    } else {
+      alert("Enter a valid url")
+    }
+  }
+
+  const handleMedia3Field = () => {
+    if (checkPattern(media3)) {
+      setMedia(existMedia => [...existMedia, media3])
+      document.getElementById("media3").disabled = "true";
+      setDisabled3(true);
+    } else {
+      alert("Enter a valid url")
+    }
+  }
+
+  const handleMedia4Field = () => {
+    if (checkPattern(media4)) {
+      setMedia(existMedia => [...existMedia, media4])
+      document.getElementById("media4").disabled = "true";
+      setDisabled4(true);
+    } else {
+      alert("Enter a valid url")
+    }
   }
 
   const handleLocationChange = (e) => {
@@ -137,7 +218,7 @@ function UpdateVenueForm() {
               required: true,
               value: { name },
               pattern: {
-                value: /^[a-zA-Z ]{3,50}$/g,
+                value: /^.{3,50}$/g,
                 message: "Must be between 3-50 characters",
               }
             })}
@@ -165,25 +246,86 @@ function UpdateVenueForm() {
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.description && errors.description.message}</Typography>
         </div>
+        <Typography variant="body1" sx={{ color: indigo.A700, textAlign: 'right', marginTop: '15px' }}>MEDIA: You can keep or replace media urls. Press "+" to confirm your choice for each field. If left unhandled, url will be removed.</Typography>
         <div>
           <g.TextFieldMain
             fullWidth
-            id="media"
-            label="Media"
+            id="media1"
+            label="Media - required"
             name="media"
             type="url"
-            value={media || []}
-            {...register("media", {
-              required: true,
-              value: { media },
-              pattern: {
-                value: /^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/g,
-                message: "Enter a valid url",
-              }
-            })}
-            onChange={handleMediaChange}
+            value={media1 || ""}
+            InputProps={{
+              endAdornment: (
+                <IconButton edge="end" disabled={disabled1} onClick={handleMedia1Field}>
+                  <Add />
+                </IconButton>
+              )
+            }}
+            {...register(`media`)}
+            onChange={(e) => setMedia1(e.target.value)}
           />
-          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media && errors.media.message}</Typography>
+          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
+        </div>
+        <div>
+          <g.TextFieldMain
+            fullWidth
+            id="media2"
+            label="Media - optional"
+            name="media2"
+            type="url"
+            value={media2 || ""}
+            InputProps={{
+              endAdornment: (
+                <IconButton edge="end" disabled={disabled2} onClick={handleMedia2Field}>
+                  <Add />
+                </IconButton>
+              )
+            }}
+            {...register(`mediaOptional1`)}
+            onChange={(e) => setMedia2(e.target.value)}
+          />
+          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
+        </div>
+        <div>
+          <g.TextFieldMain
+            fullWidth
+            id="media3"
+            label="Media - optional"
+            name="media3"
+            type="url"
+            value={media3 || ""}
+            InputProps={{
+              endAdornment: (
+                <IconButton edge="end" disabled={disabled3} onClick={handleMedia3Field}>
+                  <Add />
+                </IconButton>
+              )
+            }}
+            {...register(`mediaOptional2`)}
+            onChange={(e) => setMedia3(e.target.value)}
+          />
+          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
+        </div>
+        <div>
+          <g.TextFieldMain
+            fullWidth
+            id="media4"
+            label="Media - optional"
+            name="media4"
+            type="url"
+            value={media4 || ""}
+            InputProps={{
+              endAdornment: (
+                <IconButton edge="end" disabled={disabled4} onClick={handleMedia4Field}>
+                  <Add />
+                </IconButton>
+              )
+            }}
+            {...register(`mediaOptional3`)}
+            onChange={(e) => setMedia4(e.target.value)}
+          />
+          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
         <div>
           <g.TextFieldMain
