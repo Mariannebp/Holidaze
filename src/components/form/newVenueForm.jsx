@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Typography } from "@mui/material";
+import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, IconButton, Typography } from "@mui/material";
 import { venuesUrl } from "../constants";
 import { useNavigate } from "react-router-dom";
-import { red } from "@mui/material/colors";
+import { indigo, red } from "@mui/material/colors";
 import * as g from "../../styles/global";
+import { Add } from "@mui/icons-material";
 
 const schema = yup
   .object({
@@ -132,7 +133,61 @@ function NewVenueForm() {
     } else {
       alert("Something went wrong, please try again")
     }
-    console.log(venue);
+  }
+
+  const [media1, setMedia1] = useState("");
+  const [media2, setMedia2] = useState("");
+  const [media3, setMedia3] = useState("");
+  const [media4, setMedia4] = useState("");
+  const [disabled1, setDisabled1] = useState(false);
+  const [disabled2, setDisabled2] = useState(false);
+  const [disabled3, setDisabled3] = useState(false);
+  const [disabled4, setDisabled4] = useState(false);
+
+  function checkPattern(check) {
+    return (
+      /^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/.test(check)
+    )
+  }
+
+  const handleMedia1Field = () => {
+    if (checkPattern(media1)) {
+      setMedia(existMedia => [...existMedia, media1])
+      document.getElementById("media1").disabled = "true";
+      setDisabled1(true);
+    } else {
+      alert("Paste valid url")
+    }
+  }
+
+  const handleMedia2Field = () => {
+    if (checkPattern(media2)) {
+      setMedia(existMedia => [...existMedia, media2])
+      document.getElementById("media2").disabled = "true";
+      setDisabled2(true);
+    } else {
+      alert("Paste valid url")
+    }
+  }
+
+  const handleMedia3Field = () => {
+    if (checkPattern(media3)) {
+      setMedia(existMedia => [...existMedia, media3])
+      document.getElementById("media3").disabled = "true";
+      setDisabled3(true);
+    } else {
+      alert("Paste valid url")
+    }
+  }
+
+  const handleMedia4Field = () => {
+    if (checkPattern(media4)) {
+      setMedia(existMedia => [...existMedia, media4])
+      document.getElementById("media4").disabled = "true";
+      setDisabled4(true);
+    } else {
+      alert("Paste valid url")
+    }
   }
 
   const handleLocationChange = (e) => {
@@ -176,16 +231,24 @@ function NewVenueForm() {
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.description?.message}</Typography>
         </div>
+        <Typography variant="body1" sx={{ color: indigo.A700, textAlign: 'right', marginTop: '15px' }}>MEDIA: You must press "+" on each you want to add.</Typography>
         <div>
           <g.TextFieldMain
             fullWidth
-            id="media"
-            label="Media"
+            id="media1"
+            label="Media - required"
             name="media"
             type="url"
             defaultValue=""
+            InputProps={{
+              endAdornment: (
+                <IconButton edge="end" disabled={disabled1} onClick={handleMedia1Field}>
+                  <Add />
+                </IconButton>
+              )
+            }}
             {...register(`media`)}
-            onChange={(e) => setMedia(existMedia => [...existMedia, e.target.value])}
+            onChange={(e) => setMedia1(e.target.value)}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
@@ -197,8 +260,15 @@ function NewVenueForm() {
             name="media2"
             type="url"
             defaultValue=""
+            InputProps={{
+              endAdornment: (
+                <IconButton edge="end" disabled={disabled2} onClick={handleMedia2Field}>
+                  <Add />
+                </IconButton>
+              )
+            }}
             {...register(`mediaOptional1`)}
-            onChange={(e) => setMedia(existMedia => [...existMedia, e.target.value])}
+            onChange={(e) => setMedia2(e.target.value)}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
@@ -210,8 +280,15 @@ function NewVenueForm() {
             name="media3"
             type="url"
             defaultValue=""
+            InputProps={{
+              endAdornment: (
+                <IconButton edge="end" disabled={disabled3} onClick={handleMedia3Field}>
+                  <Add />
+                </IconButton>
+              )
+            }}
             {...register(`mediaOptional2`)}
-            onChange={(e) => setMedia(existMedia => [...existMedia, e.target.value])}
+            onChange={(e) => setMedia3(e.target.value)}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
@@ -223,8 +300,15 @@ function NewVenueForm() {
             name="media4"
             type="url"
             defaultValue=""
+            InputProps={{
+              endAdornment: (
+                <IconButton edge="end" disabled={disabled4} onClick={handleMedia4Field}>
+                  <Add />
+                </IconButton>
+              )
+            }}
             {...register(`mediaOptional3`)}
-            onChange={(e) => setMedia(existMedia => [...existMedia, e.target.value])}
+            onChange={(e) => setMedia4(e.target.value)}
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
@@ -299,7 +383,7 @@ function NewVenueForm() {
         </div>
         <g.ButtonMain variant="contained" type="submit">PUBLISH</g.ButtonMain>
       </Box>
-    </Box>
+    </Box >
   )
 }
 
