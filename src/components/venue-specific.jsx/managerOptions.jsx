@@ -26,7 +26,6 @@ function ManagerOptions() {
       },
       method
     })
-    console.log(response)
     if (response.ok) {
       alert("Your venue has been deleted");
       navigate("/pages/profile");

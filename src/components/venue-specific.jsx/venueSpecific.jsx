@@ -46,7 +46,6 @@ function VenueSpecific() {
   function handleModal(e) {
     setModalSrc(e.target.src);
     handleOpen();
-    console.log(modalSrc)
   }
 
   return (
@@ -108,8 +107,8 @@ function VenueSpecific() {
             {data.media && data.media.length > 1 ? (
               data.media.slice(1).map((m) => {
                 return (
-                  <Box>
-                    <Box component="img" src={m} alt={data.name} key={m} onClick={handleModal} sx={{ width: '200px', margin: '5px' }} />
+                  <Box key={m}>
+                    <Box component="img" src={m} alt={data.name} onClick={handleModal} sx={{ width: '200px', margin: '5px' }} />
                   </Box>
                 )
               }))
