@@ -25,7 +25,7 @@ const schema = yup
       .required("Enter a valid url"),
     mediaOptional1: yup
       .string()
-      .matches(/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/, "Enter a valid url")
+      .matches(/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/,)
       .transform((value, originalValue) => {
         if (!value) {
           return null;
@@ -36,7 +36,7 @@ const schema = yup
       .optional(),
     mediaOptional2: yup
       .string()
-      .matches(/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/, "Enter a valid url")
+      .matches(/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/,)
       .transform((value, originalValue) => {
         if (!value) {
           return null;
@@ -118,20 +118,24 @@ function NewVenueForm() {
 
     const body = JSON.stringify(venue);
 
-    const response = await fetch(venuesUrl, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      method,
-      body
-    })
+    if (media.length) {
+      const response = await fetch(venuesUrl, {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        method,
+        body
+      })
 
-    if (response.ok) {
-      alert("Your venue is published!");
-      navigate("/pages/profile");
+      if (response.ok) {
+        alert("Your venue is published!");
+        navigate("/pages/profile");
+      } else {
+        alert("Something went wrong, please try again")
+      }
     } else {
-      alert("Something went wrong, please try again")
+      alert("The media - required field must be added")
     }
   }
 
@@ -270,7 +274,6 @@ function NewVenueForm() {
             {...register(`mediaOptional1`)}
             onChange={(e) => setMedia2(e.target.value)}
           />
-          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
         <div>
           <g.TextFieldMain
@@ -290,7 +293,6 @@ function NewVenueForm() {
             {...register(`mediaOptional2`)}
             onChange={(e) => setMedia3(e.target.value)}
           />
-          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
         <div>
           <g.TextFieldMain
@@ -310,7 +312,6 @@ function NewVenueForm() {
             {...register(`mediaOptional3`)}
             onChange={(e) => setMedia4(e.target.value)}
           />
-          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
         <div>
           <g.TextFieldMain
@@ -332,7 +333,6 @@ function NewVenueForm() {
             {...register(`country`)}
             onChange={handleLocationChange}
           />
-          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.country?.message}</Typography>
         </div>
         <div>
           <g.TextFieldMain

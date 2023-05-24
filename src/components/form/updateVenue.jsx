@@ -285,7 +285,6 @@ function UpdateVenueForm() {
             {...register(`mediaOptional1`)}
             onChange={(e) => setMedia2(e.target.value)}
           />
-          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
         <div>
           <g.TextFieldMain
@@ -305,7 +304,6 @@ function UpdateVenueForm() {
             {...register(`mediaOptional2`)}
             onChange={(e) => setMedia3(e.target.value)}
           />
-          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
         <div>
           <g.TextFieldMain
@@ -325,7 +323,6 @@ function UpdateVenueForm() {
             {...register(`mediaOptional3`)}
             onChange={(e) => setMedia4(e.target.value)}
           />
-          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
         </div>
         <div>
           <g.TextFieldMain
