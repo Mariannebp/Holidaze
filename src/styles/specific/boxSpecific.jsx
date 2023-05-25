@@ -54,7 +54,7 @@ export const BoxBorder = styled(Box)(({ theme }) => ({
 
 export const BoxImage = styled(Box)(({ theme }) => ({
   width: '380px',
-  height: '100%',
+  height: 'object-fit',
 
   '@media (max-width: 750px)': {
     width: '270px',
@@ -81,20 +81,21 @@ export const BoxMoreMedia = styled(Box)(({ theme }) => ({
 }))
 
 export const BoxMediaModal = styled(Box)(({ theme }) => ({
-  width: '600px',
+  maxWidth: '600px',
+  maxHeight: '100%',
   position: 'absolute',
-  top: '40%',
+  top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   border: '2px solid #fff',
   boxShadow: 24,
 
   '@media (max-width: 750px)': {
-    width: '500px'
+    maxWidth: '500px'
   },
 
   '@media (max-width: 600px)': {
-    width: '300px',
+    maxWidth: '300px',
     justifyContent: 'center'
   },
 }))
