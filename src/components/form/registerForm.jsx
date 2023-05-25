@@ -18,7 +18,7 @@ const schema = yup
       .required("Enter your name"),
     email: yup
       .string()
-      .matches(/^[\w\-.]+@stud.noroff.no$/, "Enter a valid email address")
+      .matches(/^[\w\-.]+@stud.noroff.no$/, "Enter a valid email address. Must be end with @stud.noroff.no")
       .required("Enter your email address"),
     avatar: yup
       .string()
