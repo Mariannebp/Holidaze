@@ -102,7 +102,7 @@ function UpdateVenueForm() {
         alert("Something went wrong, please try again")
       }
     } else {
-      alert("The media - required field must be confirmed")
+      alert("At least one media field must be confirmed/added")
     }
   }
 
@@ -251,7 +251,7 @@ function UpdateVenueForm() {
           <g.TextFieldMain
             fullWidth
             id="media1"
-            label="Media - required"
+            label="Media 1"
             name="media"
             type="url"
             value={media1 || ""}
@@ -271,7 +271,7 @@ function UpdateVenueForm() {
           <g.TextFieldMain
             fullWidth
             id="media2"
-            label="Media - optional"
+            label="Media 2"
             name="media2"
             type="url"
             value={media2 || ""}
@@ -290,7 +290,7 @@ function UpdateVenueForm() {
           <g.TextFieldMain
             fullWidth
             id="media3"
-            label="Media - optional"
+            label="Media 3"
             name="media3"
             type="url"
             value={media3 || ""}
@@ -309,7 +309,7 @@ function UpdateVenueForm() {
           <g.TextFieldMain
             fullWidth
             id="media4"
-            label="Media - optional"
+            label="Media 4"
             name="media4"
             type="url"
             value={media4 || ""}
