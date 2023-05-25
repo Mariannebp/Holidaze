@@ -244,9 +244,10 @@ function NewVenueForm() {
             name="media"
             type="url"
             defaultValue=""
+            
             InputProps={{
               endAdornment: (
-                <IconButton edge="end" disabled={disabled1} onClick={handleMedia1Field}>
+                <IconButton edge="end" aria-label="media field required" disabled={disabled1} onClick={handleMedia1Field}>
                   <Add />
                 </IconButton>
               )
@@ -266,7 +267,7 @@ function NewVenueForm() {
             defaultValue=""
             InputProps={{
               endAdornment: (
-                <IconButton edge="end" disabled={disabled2} onClick={handleMedia2Field}>
+                <IconButton edge="end" disabled={disabled2} aria-label="media field optional" onClick={handleMedia2Field}>
                   <Add />
                 </IconButton>
               )
@@ -285,7 +286,7 @@ function NewVenueForm() {
             defaultValue=""
             InputProps={{
               endAdornment: (
-                <IconButton edge="end" disabled={disabled3} onClick={handleMedia3Field}>
+                <IconButton edge="end" disabled={disabled3}  aria-label="media field optional" onClick={handleMedia3Field}>
                   <Add />
                 </IconButton>
               )
@@ -304,7 +305,7 @@ function NewVenueForm() {
             defaultValue=""
             InputProps={{
               endAdornment: (
-                <IconButton edge="end" disabled={disabled4} onClick={handleMedia4Field}>
+                <IconButton edge="end" disabled={disabled4}aria-label="media field optional" onClick={handleMedia4Field}>
                   <Add />
                 </IconButton>
               )
