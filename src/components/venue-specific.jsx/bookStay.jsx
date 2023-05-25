@@ -59,6 +59,12 @@ function BookStay() {
     return dates;
   };
 
+  useEffect(() => {
+    document.querySelector("[placeholder=Early]").setAttribute("aria-label", "Date Input")
+    document.querySelector("[placeholder=Continuous]").setAttribute("aria-label", "Date Input")
+    document.querySelector(".rdrPprevButton").setAttribute("aria-label", "Previous Month");
+    document.querySelector(".rdrNextButton").setAttribute("aria-label", "Next Month");
+  })
 
   /**
    * Sorts out the already booked dates for the venue

@@ -18,7 +18,7 @@ function Header() {
         <Toolbar sx={{ backgroundColor: 'white', position: 'fixed', width: '100%', boxShadow: 4, paddingLeft: '24px' }}>
           <Stack direction="row" spacing={{ xs: 1, sm: 4 }} sx={{ flexGrow: 1, alignItems: "center" }} >
             <Link href="/">
-              <Box component="img" src={logo} sx={{ width: '80px', height: '80px', marginTop: '5px', }} />
+              <Box component="img" src={logo} alt="Holidae logo" sx={{ width: '80px', height: '80px', marginTop: '5px', }} />
             </Link>
             <Nav />
           </Stack>
