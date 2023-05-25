@@ -82,8 +82,9 @@ export const BoxMoreMedia = styled(Box)(({ theme }) => ({
 
 export const BoxMediaModal = styled(Box)(({ theme }) => ({
   width: '600px',
+  maxHeight: '100%',
   position: 'absolute',
-  top: '40%',
+  top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   border: '2px solid #fff',
