@@ -1,5 +1,7 @@
 # Project Exam 2 - Holidaze
 
+[Screenshot of live site when it's been marked]
+
 - Type: Project Exam 2
 - When: spring 2023
 - Where: Front End Development course, Noroff School of technology and digital media.
@@ -67,6 +69,11 @@ Run live server
 npm run start
 ```
 
+## Improvements
+
+#### What I want to improve
+
+- Add an image of the live site at the top of this README file when the project exam has been marked.
 
 ## Contact
 
@@ -80,5 +87,6 @@ https://pe2-holidaze.netlify.app/
 
 - https://font.google.com
 - https://gist.github.com/miguelmota/7905510
+- https://myfreelogomaker.com/ - no attribution needed
 - Background image - no attribution needed
 - Placeholder image - self made
