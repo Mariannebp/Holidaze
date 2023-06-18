@@ -1,6 +1,6 @@
 # Project Exam 2 - Holidaze
 
-[Screenshot of live site when it's been marked]
+![Screen shot of project](/src/assets/readmeImage/Holidaze_edt.jpg)
 
 - Type: Project Exam 2
 - When: spring 2023
@@ -37,10 +37,6 @@ On this site the users may do the following:
 - A registered user with manager role may delete a venue they own
 
 
-
-
-
-
 ## Built with
 
 - React
@@ -71,9 +67,9 @@ npm run start
 
 ## Improvements
 
-#### What I want to improve
+#### What I have changed since delivery
 
-- Add an image of the live site at the top of this README file when the project exam has been marked.
+- Updated the README file.
 
 ## Contact
 
