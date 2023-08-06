@@ -67,6 +67,10 @@ npm run start
 
 ## Improvements
 
+#### In progress
+
+- Updating media handling on "create new venue" and "update venue"
+
 #### What I have changed since delivery
 
 - Updated the README file.
