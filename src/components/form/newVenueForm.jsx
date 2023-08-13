@@ -7,7 +7,7 @@ import { venuesUrl } from "../constants";
 import { useNavigate } from "react-router-dom";
 import { indigo, red } from "@mui/material/colors";
 import * as g from "../../styles/global";
-import { Add } from "@mui/icons-material";
+import { Add, RemoveCircle } from "@mui/icons-material";
 
 const schema = yup
   .object({
@@ -22,40 +22,7 @@ const schema = yup
     media: yup
       .string()
       .matches(/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/, "Enter a valid url")
-      .required("Enter a valid url"),
-    mediaOptional1: yup
-      .string()
-      .matches(/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/,)
-      .transform((value, originalValue) => {
-        if (!value) {
-          return null;
-        }
-        return originalValue;
-      })
-      .nullable()
-      .optional(),
-    mediaOptional2: yup
-      .string()
-      .matches(/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/,)
-      .transform((value, originalValue) => {
-        if (!value) {
-          return null;
-        }
-        return originalValue;
-      })
-      .nullable()
-      .optional(),
-    mediaOptional3: yup
-      .string()
-      .matches(/^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/, "Enter a valid url")
-      .transform((value, originalValue) => {
-        if (!value) {
-          return null;
-        }
-        return originalValue;
-      })
-      .nullable()
-      .optional(),
+      .optional("Enter a valid url"),
     city: yup
       .string()
       .required("Enter the city"),
@@ -135,18 +102,11 @@ function NewVenueForm() {
         alert("Something went wrong, please try again")
       }
     } else {
-      alert("The media - required field must be added")
+      alert("You must add at least one media")
     }
   }
 
   const [media1, setMedia1] = useState("");
-  const [media2, setMedia2] = useState("");
-  const [media3, setMedia3] = useState("");
-  const [media4, setMedia4] = useState("");
-  const [disabled1, setDisabled1] = useState(false);
-  const [disabled2, setDisabled2] = useState(false);
-  const [disabled3, setDisabled3] = useState(false);
-  const [disabled4, setDisabled4] = useState(false);
 
   function checkPattern(check) {
     return (
@@ -154,44 +114,19 @@ function NewVenueForm() {
     )
   }
 
-  const handleMedia1Field = () => {
+  const handleMediaField = () => {
     if (checkPattern(media1)) {
       setMedia(existMedia => [...existMedia, media1])
-      document.getElementById("media1").disabled = "true";
-      setDisabled1(true);
+      setMedia1("")
     } else {
       alert("Paste valid url")
     }
   }
 
-  const handleMedia2Field = () => {
-    if (checkPattern(media2)) {
-      setMedia(existMedia => [...existMedia, media2])
-      document.getElementById("media2").disabled = "true";
-      setDisabled2(true);
-    } else {
-      alert("Paste valid url")
-    }
-  }
-
-  const handleMedia3Field = () => {
-    if (checkPattern(media3)) {
-      setMedia(existMedia => [...existMedia, media3])
-      document.getElementById("media3").disabled = "true";
-      setDisabled3(true);
-    } else {
-      alert("Paste valid url")
-    }
-  }
-
-  const handleMedia4Field = () => {
-    if (checkPattern(media4)) {
-      setMedia(existMedia => [...existMedia, media4])
-      document.getElementById("media4").disabled = "true";
-      setDisabled4(true);
-    } else {
-      alert("Paste valid url")
-    }
+  const handleMediaRemove = (index) => {
+    setMedia(existMedia => {
+      return existMedia.filter((_, i) => i !== index)
+    })
   }
 
   const handleLocationChange = (e) => {
@@ -235,19 +170,37 @@ function NewVenueForm() {
           />
           <Typography variant="body2" sx={{ color: red.A700 }}>{errors.description?.message}</Typography>
         </div>
-        <Typography variant="body1" sx={{ color: indigo.A700, textAlign: 'right', marginTop: '15px' }}>MEDIA: You must press "+" on each you want to add.</Typography>
+        <Box sx={{ marginTop: '15px' }}>
+          <Typography variant="body1" color="primary">Media preview</Typography>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', }}>
+            {media.length > 0 ? (
+              media.map((m, index) => {
+                return (
+                  <Box key={index} sx={{ display: 'flex', alignItems: 'flex-start' }}>
+                    <Box component="img" src={m} alt="added media" sx={{ width: '100px', margin: '5px' }} />
+                    <IconButton edge="start" aria-label="remove media" sx={{ color: 'grey', paddingTop: '0' }} onClick={() => handleMediaRemove(index)}>
+                      <RemoveCircle />
+                    </IconButton>
+                  </Box>
+                )
+              })
+            )
+              : <Typography variant="body1" color="primary" sx={{ fontStyle: 'italic' }}>No media yet</Typography>}
+          </Box>
+        </Box>
+        <Typography variant="body1" sx={{ color: indigo.A700, textAlign: 'right', marginTop: '15px' }}
+        >MEDIA: Press "+" to add.</Typography>
         <div>
           <g.TextFieldMain
             fullWidth
             id="media1"
-            label="Media - required"
+            label="Media"
             name="media"
             type="url"
-            defaultValue=""
-            
+            value={media1}
             InputProps={{
               endAdornment: (
-                <IconButton edge="end" aria-label="media field required" disabled={disabled1} onClick={handleMedia1Field}>
+                <IconButton edge="end" aria-label="media field required" onClick={handleMediaField}>
                   <Add />
                 </IconButton>
               )
@@ -255,64 +208,7 @@ function NewVenueForm() {
             {...register(`media`)}
             onChange={(e) => setMedia1(e.target.value)}
           />
-          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>
-        </div>
-        <div>
-          <g.TextFieldMain
-            fullWidth
-            id="media2"
-            label="Media - optional"
-            name="media2"
-            type="url"
-            defaultValue=""
-            InputProps={{
-              endAdornment: (
-                <IconButton edge="end" disabled={disabled2} aria-label="media field optional" onClick={handleMedia2Field}>
-                  <Add />
-                </IconButton>
-              )
-            }}
-            {...register(`mediaOptional1`)}
-            onChange={(e) => setMedia2(e.target.value)}
-          />
-        </div>
-        <div>
-          <g.TextFieldMain
-            fullWidth
-            id="media3"
-            label="Media - optional"
-            name="media3"
-            type="url"
-            defaultValue=""
-            InputProps={{
-              endAdornment: (
-                <IconButton edge="end" disabled={disabled3}  aria-label="media field optional" onClick={handleMedia3Field}>
-                  <Add />
-                </IconButton>
-              )
-            }}
-            {...register(`mediaOptional2`)}
-            onChange={(e) => setMedia3(e.target.value)}
-          />
-        </div>
-        <div>
-          <g.TextFieldMain
-            fullWidth
-            id="media4"
-            label="Media - optional"
-            name="media4"
-            type="url"
-            defaultValue=""
-            InputProps={{
-              endAdornment: (
-                <IconButton edge="end" disabled={disabled4}aria-label="media field optional" onClick={handleMedia4Field}>
-                  <Add />
-                </IconButton>
-              )
-            }}
-            {...register(`mediaOptional3`)}
-            onChange={(e) => setMedia4(e.target.value)}
-          />
+          {media.length > 0 ? null : <Typography variant="body2" sx={{ color: red.A700 }}>{errors.media?.message}</Typography>}
         </div>
         <div>
           <g.TextFieldMain
@@ -334,6 +230,7 @@ function NewVenueForm() {
             {...register(`country`)}
             onChange={handleLocationChange}
           />
+          <Typography variant="body2" sx={{ color: red.A700 }}>{errors.country?.message}</Typography>
         </div>
         <div>
           <g.TextFieldMain
