@@ -37,11 +37,10 @@ function LoginForm() {
 
     const { accessToken, ...user } = await response.json()
 
-    localStorage.setItem("token", accessToken)
-    localStorage.setItem("profile", JSON.stringify(user))
-
     if (response.ok) {
       navigate("/pages/profile");
+      localStorage.setItem("token", accessToken)
+      localStorage.setItem("profile", JSON.stringify(user))
       window.location.reload();
     } else {
       alert("Something went wrong, please try again")
@@ -59,7 +58,7 @@ function LoginForm() {
             value={email}
             {...register(`email`, {
               required: true,
-              value: {email},
+              value: { email },
               pattern: {
                 value: /^[\w\-.]+@stud.noroff.no$/,
                 message: "Enter a valid email address"
